@@ -1,0 +1,149 @@
+/* AdminFarmers.css */
+
+.farmer-search-wrapper {
+  position: relative;
+}
+
+.farmer-search-icon {
+  position: absolute;
+  left: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--as-soft-green);
+}
+
+.farmer-search-input {
+  padding-left: 2.5rem !important;
+  min-width: 200px;
+}
+
+@media (max-width: 350px) {
+  .farmer-search-input { min-width: 100%; }
+}
+
+.farmer-table-avatar {
+  width: 36px;
+  height: 36px;
+}
+
+.farmer-table-placeholder {
+  width: 36px;
+  height: 36px;
+  font-size: 0.9rem;
+}
+
+.farmer-name-main {
+  font-size: 0.88rem;
+}
+
+.farmer-email-sub {
+  font-size: 0.72rem;
+}
+
+.farmer-location-text {
+  font-size: 0.82rem;
+}
+
+.farmer-joined-text {
+  font-size: 0.8rem;
+}
+
+.farmer-saved-text {
+  font-size: 0.88rem;
+}
+
+.farmer-action-btn-status {
+  font-size: 0.78rem !important;
+  border-style: none !important;
+}
+
+/* Mobile */
+.farmer-mobile-card {
+  margin-bottom: 0.8rem;
+}
+
+.farmer-mobile-avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.farmer-mobile-placeholder {
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+}
+
+@media (max-width: 350px) {
+  .farmer-mobile-avatar, .farmer-mobile-placeholder {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+  .farmer-mobile-name { font-size: 0.85rem; }
+  .farmer-mobile-email { font-size: 0.65rem; }
+}
+
+.farmer-mobile-name {
+  font-size: 0.95rem;
+}
+
+.farmer-mobile-email {
+  font-size: 0.75rem;
+}
+
+.farmer-mobile-meta {
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.farmer-mobile-action-btn {
+  font-size: 0.85rem !important;
+}
+
+/* Modal */
+.farmer-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.farmer-delete-modal-card {
+  width: 100%;
+  max-width: 420px;
+  height: auto !important;
+}
+
+.delete-icon-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(220, 53, 69, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 1.8rem;
+}
+
+.delete-modal-text {
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.confirm-delete-button {
+  background: var(--as-danger) !important;
+  color: white !important;
+}
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-wrapper table {
+  min-width: 700px;
+}

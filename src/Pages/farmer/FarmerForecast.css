@@ -1,0 +1,240 @@
+/* FarmerForecast.css */
+
+.forecast-page-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 350px) {
+  .forecast-page-header { gap: 0.5rem; margin-bottom: 1rem; }
+  .forecast-icon-large { font-size: 2rem; }
+  .forecast-temp-value { font-size: 1.2rem; }
+  .forecast-stat-label, .forecast-stat-value { font-size: 0.7rem; }
+}
+
+.forecast-location-meta {
+  color: var(--as-soft-green);
+  font-size: 0.85rem;
+}
+
+.forecast-card-detailed {
+  background: white;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  border: 2px solid transparent;
+}
+
+.forecast-card-good {
+  border-color: rgba(82, 183, 136, 0.2);
+}
+
+.forecast-card-poor {
+  border-color: rgba(220, 53, 69, 0.1);
+}
+
+.forecast-day-label {
+  color: var(--as-accent-green);
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.forecast-icon-large {
+  font-size: 2rem;
+  text-align: center;
+  margin: 0.2rem 0;
+}
+
+.forecast-temp-value {
+  color: var(--as-dark-green);
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-align: center;
+  font-family: 'Georgia', serif;
+}
+
+.forecast-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.2rem;
+}
+
+.forecast-stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forecast-stat-label {
+  color: var(--as-soft-green);
+  font-size: 0.75rem;
+}
+
+.forecast-stat-value {
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+.forecast-condition-label {
+  font-size: 0.78rem;
+  text-align: center;
+  color: var(--as-soft-green);
+}
+
+.forecast-recommendation {
+  font-size: 0.75rem;
+  color: var(--as-text-soft, #6b7280);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.forecast-tip-item {
+  font-size: 0.72rem;
+  color: var(--as-text-soft, #6b7280);
+  line-height: 1.4;
+  display: flex;
+  gap: 4px;
+}
+
+.save-date-btn {
+  font-weight: 700 !important;
+  font-size: 0.82rem !important;
+  margin-top: auto;
+}
+
+.save-date-btn-saved {
+  background: rgba(82, 183, 136, 0.1) !important;
+  color: var(--as-primary-green) !important;
+  border: 1px solid rgba(82, 183, 136, 0.3) !important;
+  cursor: default !important;
+}
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.forecast-temp-range{
+  font-size: 0.75rem;
+  color: var(--as-text-soft, #6b7280);
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+.forecast-description{
+  font-size: 0.72rem;
+  color: var(--as-text-soft, #6b7280);
+  text-transform: capitalize;
+  margin-bottom: 6px;
+}
+
+/* ── Info banner ── */
+.forecast-info-banner {
+  background-color: #ebf5fc;
+  color: #1d3557;
+  border-radius: 12px;
+  border: none;
+  padding: 12px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.forecast-info-banner-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.forecast-info-banner-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.forecast-info-banner-text {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ── Card top border by suitability ── */
+.forecast-card-optimal    { border-top: 4px solid #52b788 !important; }
+.forecast-card-suitable   { border-top: 4px solid #4db6e4 !important; }
+.forecast-card-restricted { border-top: 4px solid #f4a261 !important; }
+.forecast-card-unsafe     { border-top: 4px solid #e63946 !important; }
+
+/* ── Suitability badge on forecast card ── */
+.forecast-suitability-badge {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ── Condition label colour by suitability ── */
+.condition-label-optimal    { color: #52b788; }
+.condition-label-suitable   { color: #4db6e4; }
+.condition-label-restricted { color: #f4a261; }
+.condition-label-unsafe     { color: #e63946; }
+
+/* ── Timing mini badge inside stat row ── */
+.forecast-timing-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #f1f3f5;
+  border: 1px solid #dee2e6;
+  color: #495057;
+  font-family: monospace;
+}
+
+/* ── Activity matrix on forecast card ── */
+.forecast-activity-matrix {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 8px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  min-height: 4rem;
+}
+
+.forecast-activity-matrix-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.forecast-activity-chip {
+  font-size: 0.68rem;
+  border-radius: 4px;
+  padding: 3px 8px;
+  background: white;
+  border: 1px solid #dee2e6;
+  color: #212529;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.forecast-activity-empty {
+  font-size: 0.7rem;
+  font-style: italic;
+}
+
+/* ── Recommendation text ── */
+.forecast-recommendation-text {
+  min-height: 3.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

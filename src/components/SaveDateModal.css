@@ -1,0 +1,288 @@
+/* SaveDateModal.css */
+
+.as-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.as-modal-card {
+  background: #0d2818;
+  border: 1px solid rgba(82, 183, 136, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  margin: auto;
+}
+
+.as-modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  color: #74c69d;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.as-modal-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.as-modal-title {
+  color: #d8f3dc;
+  font-family: 'Georgia', serif;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.as-modal-subtitle {
+  color: #74c69d;
+  font-size: 0.88rem;
+  margin-bottom: 1.5rem;
+  font-family: sans-serif;
+}
+
+.as-modal-label {
+  color: #95d5b2;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: sans-serif;
+}
+
+.as-modal-label-optional {
+  color: #52b788;
+  font-weight: 400;
+}
+
+.as-modal-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(82, 183, 136, 0.25);
+  border-radius: 12px;
+  color: #d8f3dc;
+  padding: 0.75rem 1rem;
+  font-size: 0.92rem;
+  font-family: sans-serif;
+  resize: none;
+  outline: none;
+}
+
+.as-modal-btn-cancel {
+  border: 1px solid rgba(82, 183, 136, 0.25) !important;
+  color: #74c69d !important;
+  background: transparent !important;
+  border-radius: 12px !important;
+  font-family: sans-serif !important;
+}
+
+.as-modal-btn-save {
+  background: linear-gradient(135deg, #52b788, #1b4332) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  font-family: sans-serif !important;
+}
+.as-modal-decision-badge {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.badge-good {
+    background: rgba(34, 197, 94, 0.15);
+    color: var(--as-primary-green);
+}
+
+.badge-poor {
+    background: rgba(248, 113, 113, 0.15);
+    color: #f87171;
+}
+
+.as-modal-select {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    border-radius: 10px;
+    border: 1.5px solid var(--as-border);
+    background: var(--as-bg-light);
+    color: var(--as-text-primary);
+    font-size: 0.85rem;
+    outline: none;
+    cursor: pointer;
+}
+
+.as-modal-select:focus {
+    border-color: var(--as-primary-green);
+}
+.modal-activity-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+@media (max-width: 360px) {
+    .modal-activity-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.modal-activity-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: 10px;
+    border: 1.5px solid var(--as-border);
+    background: var(--as-bg-light);
+    cursor: pointer;
+    font-size: 0.82rem;
+    text-align: left;
+    position: relative;
+    transition: all 0.18s;
+}
+
+.modal-activity-btn:hover {
+    border-color: var(--as-primary-green);
+}
+
+.modal-activity-btn-selected {
+    border-color: var(--as-primary-green);
+    background: rgba(34, 197, 94, 0.08);
+}
+
+.modal-activity-btn-recommended {
+    border-color: var(--as-primary-green);
+}
+
+.activity-btn-icon { font-size: 1rem; }
+.activity-btn-label { color: var(--as-text-primary); font-weight: 500; }
+
+.activity-recommended-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--as-primary-green);
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}
+
+.modal-recommended-row p { font-size: 0.8rem; color: var(--as-text-soft); }
+
+.modal-activity-chip {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.modal-activity-chip-good {
+    background: rgba(34, 197, 94, 0.12);
+    color: var(--as-primary-green);
+}
+
+.modal-activity-warning {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    background: rgba(251, 191, 36, 0.12);
+    color: #b45309;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.as-modal-decision-badge {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+.badge-good { background: rgba(34,197,94,0.15); color: var(--as-primary-green); }
+.badge-poor { background: rgba(248,113,113,0.15); color: #f87171; }
+
+.as-modal-select {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    border-radius: 10px;
+    border: 1.5px solid var(--as-border);
+    background: var(--as-bg-light);
+    color: var(--as-text-primary);
+    font-size: 0.85rem;
+    outline: none;
+    cursor: pointer;
+}
+.as-modal-select:focus { border-color: var(--as-primary-green); }
+
+/* ── Future forecast disclaimer ── */
+.modal-future-disclaimer {
+  background: rgba(82, 183, 136, 0.08);
+  border: 1px dashed rgba(82, 183, 136, 0.35);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-top: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.modal-future-disclaimer-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.modal-future-disclaimer-text {
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: #74c69d;
+  margin: 0;
+}
+
+.modal-future-disclaimer-text strong {
+  color: #95d5b2;
+}
+
+/* ── Timing badge shown in modal header ── */
+.modal-timing-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.modal-timing-badge-night {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.modal-timing-badge-morning {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.25);
+}
+
+.modal-timing-badge-afternoon {
+  background: rgba(249, 115, 22, 0.12);
+  color: #fb923c;
+  border: 1px solid rgba(249, 115, 22, 0.25);
+}

@@ -1,0 +1,241 @@
+/* SmartAgriClimate Dashboard Styles */
+
+:root {
+  --as-primary-green: #52b788;
+  --as-dark-green: #1b4332;
+  --as-light-green: #d8f3dc;
+  --as-accent-green: #2d6a4f;
+  --as-soft-green: #74c69d;
+  --as-bg-light: #f0f7f4;
+  --as-danger: #dc3545;
+  --as-warning: #cc7000;
+  --as-white: #ffffff;
+}
+
+/* Base Utility Classes */
+.as-card {
+  background: var(--as-white);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  height: 100%;
+}
+
+@media (max-width: 576px) {
+  .as-card {
+    padding: 1rem;
+    border-radius: 16px;
+  }
+}
+
+.as-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: all 0.2s ease;
+}
+
+/* Typography */
+.as-section-title {
+  color: var(--as-dark-green);
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Georgia', serif;
+}
+
+.as-text-primary { color: var(--as-dark-green); }
+.as-text-soft { color: var(--as-soft-green); }
+.as-text-accent { color: var(--as-accent-green); }
+
+/* Badges */
+.as-badge {
+  border-radius: 20px;
+  padding: 0.22rem 0.85rem;
+  font-size: 0.73rem;
+  font-weight: 700;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.as-badge-active {
+  background: rgba(82, 183, 136, 0.12);
+  color: var(--as-accent-green);
+}
+
+.as-badge-inactive {
+  background: rgba(220, 53, 69, 0.08);
+  color: var(--as-danger);
+}
+
+.as-badge-super {
+  background: rgba(82, 183, 136, 0.15);
+  color: var(--as-dark-green);
+  border: 1px solid rgba(82, 183, 136, 0.4);
+}
+
+/* Avatars */
+.as-avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.as-avatar-placeholder {
+  background: linear-gradient(135deg, var(--as-primary-green), var(--as-dark-green));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Tables */
+.as-table-container {
+  overflow-x: auto;
+  border-radius: 20px;
+}
+
+.as-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 6px;
+}
+
+.as-table thead tr {
+  color: var(--as-soft-green);
+  font-size: 0.73rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.as-table th {
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.as-table tbody tr {
+  background: var(--as-bg-light);
+  transition: transform 0.1s;
+}
+
+.as-table td {
+  padding: 0.9rem 1rem;
+}
+
+.as-table td:first-child { border-radius: 10px 0 0 10px; }
+.as-table td:last-child { border-radius: 0 10px 10px 0; }
+
+/* Buttons */
+.as-btn {
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.2s;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.as-btn-primary {
+  background: linear-gradient(135deg, var(--as-primary-green), var(--as-dark-green));
+  color: white;
+}
+
+.as-btn-primary:hover {
+  opacity: 0.9;
+  color: white;
+}
+
+.as-btn-outline {
+  border: 1.5px solid var(--as-light-green);
+  color: var(--as-accent-green);
+  background: transparent;
+}
+
+.as-btn-outline:hover {
+  background: var(--as-bg-light);
+}
+
+.as-btn-danger {
+  background: rgba(220, 53, 69, 0.08);
+  color: var(--as-danger);
+}
+
+.as-btn-danger:hover {
+  background: rgba(220, 53, 69, 0.15);
+}
+
+/* Forms */
+.as-input {
+  border-radius: 12px;
+  border: 1.5px solid var(--as-light-green);
+  background: white;
+  color: var(--as-dark-green);
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  outline: none;
+  width: 100%;
+}
+
+.as-input:focus {
+  border-color: var(--as-primary-green);
+}
+
+.as-label {
+  color: var(--as-accent-green);
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: block;
+  marginBottom: 0.4rem;
+}
+
+/* Layout */
+.as-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.as-header-line {
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(180deg, var(--as-primary-green), var(--as-dark-green));
+  border-radius: 4px;
+}
+
+/* Status Classes */
+.btn-status-deactivate {
+  background: rgba(255, 140, 0, 0.1) !important;
+  color: var(--as-warning) !important;
+}
+
+.btn-status-activate {
+  background: rgba(82, 183, 136, 0.12) !important;
+  color: var(--as-accent-green) !important;
+}
+
+/* --- iPhone 5 & Tiny Screen Optimizations --- */
+@media (max-width: 350px) {
+  :root {
+    font-size: 14px; /* Slightly shrink base font */
+  }
+  
+  .container, .container-fluid {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  
+  .as-card {
+    padding: 0.75rem;
+  }
+  
+  .as-badge {
+    padding: 0.15rem 0.5rem;
+    font-size: 0.65rem;
+  }
+  
+  h5, .h5 { font-size: 1.1rem; }
+  h6, .h6 { font-size: 1rem; }
+}

@@ -1,0 +1,250 @@
+/* FarmerLayout.css */
+
+.farmer-layout-wrapper {
+  display: flex;
+  height: 100vh;          /* full viewport height — enables sticky sidebar */
+  overflow: hidden;       /* wrapper clips; only main-content scrolls */
+  background: var(--as-bg-light);
+  font-family: 'sans-serif';
+}
+
+.farmer-sidebar-base {
+  width: 240px;
+  background: linear-gradient(180deg, #081c15 0%, #1b4332 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  flex-shrink: 0;
+}
+
+.farmer-sidebar-desktop {
+  position: sticky;
+  top: 0;
+  height: 100vh;          /* sidebar stays full height and never scrolls */
+  overflow-y: auto;
+}
+
+.farmer-sidebar-mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  max-width: 80%;
+  height: 100vh;          /* ← add this */
+  overflow-y: auto;       /* ← add this so nav scrolls if content is tall */
+  z-index: 200;
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 350px) {
+  .farmer-sidebar-mobile {
+    width: 230px;
+  }
+}
+
+.farmer-sidebar-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 199;
+}
+
+.farmer-sidebar-logo-icon {
+  font-size: 22px;
+}
+
+.farmer-sidebar-logo-text {
+  font-family: 'Georgia', serif;
+  font-weight: bold;
+  color: #b7e4c7;
+  font-size: 1.15rem;
+}
+
+.farmer-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 0.3rem;
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: all 0.2s;
+}
+
+.farmer-nav-item-active {
+  background: rgba(82, 183, 136, 0.18);
+  color: var(--as-primary-green);
+  font-weight: 700;
+}
+
+.farmer-nav-item-inactive {
+  background: transparent;
+  color: var(--as-soft-green);
+  font-weight: 500;
+}
+
+.farmer-sidebar-footer {
+  border-top: 1px solid rgba(82, 183, 136, 0.15);
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.farmer-logout-sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--as-soft-green);
+  background: none;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.farmer-version-text {
+  color: #2d6a4f;
+  font-size: 0.75rem;
+  margin: 0;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.farmer-topbar {
+  background: white;
+  border-bottom: 1px solid #d8f3dc;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 1rem;
+}
+
+.farmer-menu-toggle {
+  color: var(--as-dark-green);
+  font-size: 1.3rem;
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+.farmer-greeting-title {
+  margin: 0;
+  color: var(--as-dark-green);
+  font-weight: 700;
+  font-size: clamp(0.72rem, 2.5vw, 0.95rem); /* shrinks on narrow screens */
+  white-space: nowrap;
+  overflow: visible;      /* never clip — let font-size do the work */
+}
+
+.farmer-topbar-location {
+  margin: 0;
+  color: var(--as-soft-green);
+  font-size: clamp(0.6rem, 2vw, 0.75rem);
+  white-space: nowrap;
+}
+
+@media (max-width: 350px) {
+  .farmer-topbar {
+    padding: 0.75rem 0.75rem;
+    gap: 0.5rem;
+  }
+}
+
+.farmer-topbar-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.farmer-topbar-placeholder {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--as-primary-green), var(--as-dark-green));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.farmer-content-area {
+  padding: 1.5rem;
+}
+/* MAIN CONTENT */
+.farmer-main-content {
+  min-width: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;       /* only this panel scrolls, not the whole page */
+  height: 100vh;          /* fill the wrapper height */
+}
+
+/* Greeting/location no longer truncated — clamp() handles sizing */
+
+/* Mobile content spacing */
+@media (max-width: 768px) {
+  .farmer-content-area {
+    padding: 1rem;
+  }
+
+  .farmer-greeting-title {
+    font-size: 0.88rem;
+  }
+
+  .farmer-topbar-location {
+    font-size: 0.7rem;
+  }
+
+  .farmer-topbar-avatar,
+  .farmer-topbar-placeholder {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 400px) {
+  .farmer-content-area {
+    padding: 0.75rem;
+  }
+
+  .farmer-topbar {
+    padding: 0.7rem;
+  }
+}
+
+/* Ultra small devices like iPhone 5 */
+@media (max-width: 320px) {
+  .farmer-topbar {
+    gap: 0.4rem;
+  }
+
+  .farmer-menu-toggle {
+    font-size: 1.1rem;
+  }
+
+  .farmer-topbar-avatar,
+  .farmer-topbar-placeholder {
+    width: 28px;
+    height: 28px;
+    font-size: 0.72rem;
+  }
+}

@@ -1,0 +1,120 @@
+/* AdminOverview.css */
+
+.admin-overview-container {
+  padding-bottom: 2rem;
+}
+
+.regular-admin-alert {
+  background: rgba(82, 183, 136, 0.07);
+  border: 1px solid rgba(82, 183, 136, 0.2);
+  border-radius: 14px;
+  padding: 0.8rem 1.2rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.alert-icon {
+  color: var(--as-primary-green);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.alert-text {
+  color: var(--as-accent-green);
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+/* Stat Cards */
+.stat-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+}
+
+@media (max-width: 350px) {
+  .stat-value { font-size: 1.2rem; }
+  .stat-icon { font-size: 1.4rem; }
+  .stat-label { font-size: 0.75rem; }
+  .farmer-avatar, .farmer-avatar-placeholder { width: 28px; height: 28px; font-size: 0.75rem; }
+  .farmer-name { font-size: 0.75rem; }
+}
+
+/* Table */
+.farmer-avatar {
+  width: 36px;
+  height: 36px;
+}
+
+.farmer-avatar-placeholder {
+  width: 36px;
+  height: 36px;
+  font-size: 0.9rem;
+}
+
+.farmer-name {
+  font-size: 0.85rem;
+}
+
+.farmer-email {
+  font-size: 0.72rem;
+}
+
+.farmer-location-cell {
+  font-size: 0.82rem;
+}
+
+.farmer-saved-count {
+  font-size: 0.85rem;
+}
+
+/* Quick Actions */
+.quick-action-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(82, 183, 136, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--as-primary-green);
+  font-size: 1.2rem;
+}
+.admin-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+/* Tablet and below → 2 per row */
+@media (max-width: 992px) {
+  .admin-overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Ultra small → tighter gap but keep 2 columns */
+@media (max-width: 360px) {
+  .admin-overview-grid {
+    gap: 0.6rem;
+  }
+}
+
+/* 320px → still 2 per row, just tighter */
+@media (max-width: 320px) {
+  .admin-overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+}

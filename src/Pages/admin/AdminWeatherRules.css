@@ -1,0 +1,137 @@
+/* AdminWeatherRules.css */
+
+.weather-rules-container {
+  max-width: 620px;
+}
+
+.weather-rules-subtitle {
+  color: var(--as-soft-green);
+  font-size: 0.88rem;
+  margin-bottom: 1.5rem;
+}
+
+.formula-preview-banner {
+  background: linear-gradient(135deg, #1b4332, #2d6a4f);
+  border-radius: 16px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.formula-label {
+  color: var(--as-soft-green);
+  font-size: 0.72rem;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.formula-content {
+  color: #d8f3dc;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 2;
+  word-break: break-word;
+}
+
+.formula-pill {
+  color: #95d5b2;
+  background: rgba(82, 183, 136, 0.2);
+  border-radius: 6px;
+  padding: 0.1rem 0.5rem;
+}
+
+.rules-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+@media (max-width: 350px) {
+  .rules-card { padding: 1.25rem; gap: 1.25rem; }
+  .formula-preview-banner { padding: 1rem; }
+  .formula-content { font-size: 0.8rem; line-height: 1.6; }
+}
+
+.field-label {
+  color: var(--as-dark-green);
+  font-weight: 700;
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.field-value-badge {
+  background: rgba(82, 183, 136, 0.12);
+  color: var(--as-accent-green);
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem;
+  font-weight: 700;
+  font-size: 0.88rem;
+  min-width: 60px;
+  text-align: center;
+}
+
+.field-description {
+  color: var(--as-soft-green);
+  font-size: 0.75rem;
+  margin: 0 0 0.5rem;
+}
+
+.field-range-input {
+  width: 100%;
+  accent-color: var(--as-primary-green);
+}
+
+.range-labels {
+  color: #b7e4c7;
+  font-size: 0.7rem;
+}
+
+.save-rules-btn {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 15px rgba(82, 183, 136, 0.3);
+}
+
+.save-rules-btn-saved {
+  background: rgba(82, 183, 136, 0.15) !important;
+  color: var(--as-accent-green) !important;
+  border: 1px solid rgba(82, 183, 136, 0.3) !important;
+  box-shadow: none !important;
+}
+.rules-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.rules-tab-btn {
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--as-border);
+    background: transparent;
+    color: var(--as-text-soft);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+}
+
+.rules-tab-btn:hover {
+    border-color: var(--as-primary-green);
+    color: var(--as-primary-green);
+}
+
+.rules-tab-btn-active {
+    background: rgba(34, 197, 94, 0.08);
+}
+
+.rules-activity-desc {
+    font-size: 0.82rem;
+    color: var(--as-text-soft);
+    margin-bottom: 1.5rem;
+}

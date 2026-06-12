@@ -1,0 +1,149 @@
+/* FarmerSavedDates.css */
+
+.saved-dates-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.saved-count-badge {
+  background: rgba(82, 183, 136, 0.12);
+  color: var(--as-accent-green);
+  border-radius: 20px;
+  padding: 0.3rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.empty-saved-card {
+  background: white;
+  border-radius: 20px;
+  padding: 4rem 2rem;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.empty-saved-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.empty-saved-subtitle {
+  color: var(--as-soft-green);
+  font-size: 0.9rem;
+}
+
+.saved-date-card {
+  background: white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(82, 183, 136, 0.15);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+@media (max-width: 350px) {
+  .saved-date-card { padding: 1rem; gap: 0.6rem; }
+  .saved-card-title { font-size: 0.9rem; }
+  .note-display-box { padding: 0.5rem; }
+  .note-text-content { font-size: 0.75rem; }
+}
+
+.saved-card-title {
+  color: var(--as-dark-green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.saved-card-meta {
+  color: var(--as-soft-green);
+  font-size: 0.78rem;
+}
+
+.delete-saved-btn {
+  background: rgba(220, 53, 69, 0.08) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: var(--as-danger) !important;
+  padding: 0.35rem 0.6rem !important;
+  font-size: 0.85rem !important;
+  flex-shrink: 0;
+}
+
+.note-textarea {
+  width: 100%;
+  background: var(--as-bg-light);
+  border: 1px solid rgba(82, 183, 136, 0.3);
+  border-radius: 10px;
+  color: var(--as-dark-green);
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  resize: none;
+  outline: none;
+  font-family: sans-serif;
+}
+
+.note-display-box {
+  background: var(--as-bg-light);
+  border-radius: 10px;
+  padding: 0.7rem;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.note-text-content {
+  font-size: 0.85rem;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-text-filled {
+  color: var(--as-accent-green);
+  font-style: normal;
+}
+
+.note-text-empty {
+  color: #b7e4c7;
+  font-style: italic;
+}
+
+.edit-note-btn {
+  background: none;
+  border: none;
+  color: var(--as-primary-green);
+  cursor: pointer;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+.saved-card-crop {
+    font-size: 0.78rem;
+    color: var(--as-primary-green);
+    font-weight: 500;
+}
+
+.saved-card-recommendation {
+    font-size: 0.78rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.recommendation-good {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--as-primary-green);
+}
+
+.recommendation-poor {
+    background: rgba(248, 113, 113, 0.1);
+    color: #f87171;
+}

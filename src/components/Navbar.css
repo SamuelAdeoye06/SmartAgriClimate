@@ -1,0 +1,73 @@
+/* Navbar.css */
+
+.as-navbar {
+  background: rgba(8, 28, 21, 0.85) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(183, 228, 199, 0.12);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+}
+
+.as-navbar-logo-text {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  color: #f1fff5;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 350px) {
+  .as-navbar-logo-text { font-size: 1.1rem; }
+  .as-navbar { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+}
+
+.as-navbar-toggler {
+  color: #b7e4c7 !important;
+  box-shadow: none !important;
+  align-items: center;
+}
+
+@media (max-width: 991.98px) {
+  .as-navbar-toggler {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .as-navbar-toggler {
+    display: none !important;
+  }
+}
+
+.as-nav-link {
+  color: #d8f3dc !important;
+  font-weight: 500;
+}
+
+.as-nav-link:hover {
+  color: var(--as-primary-green) !important;
+}
+
+.as-navbar-btn-outline {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #d8f3dc !important;
+  border-radius: 8px !important;
+}
+
+.as-navbar-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: white !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.as-navbar-btn-primary {
+  background: #52b788 !important;
+  color: #062116 !important;
+  border-radius: 8px !important;
+  border: none !important;
+  font-weight: 700 !important;
+}
+
+.as-navbar-btn-primary:hover {
+  background: #74c69d !important;
+  color: #062116 !important;
+}

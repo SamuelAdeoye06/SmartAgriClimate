@@ -1,0 +1,49 @@
+/* Footer.css */
+
+.as-footer {
+  background: linear-gradient(135deg, #081c15 0%, #1b4332 100%);
+  color: #b7e4c7;
+  padding: 3rem 0 1.5rem;
+}
+
+.as-footer-logo-text {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #f1fff5;
+  letter-spacing: -0.02em;
+}
+
+.as-footer-desc {
+  color: #74c69d;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.as-footer-heading {
+  color: var(--as-primary-green);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.as-footer-link {
+  color: #74c69d !important;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.as-footer-link:hover {
+  color: var(--as-primary-green) !important;
+}
+
+.as-footer-divider {
+  border-color: #2d6a4f;
+  margin: 2rem 0 1rem;
+}
+
+.as-footer-copy {
+  color: var(--as-primary-green);
+  font-size: 0.85rem;
+  margin: 0;
+}

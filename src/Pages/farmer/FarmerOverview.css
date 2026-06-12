@@ -1,0 +1,499 @@
+/* FarmerOverview.css */
+
+.stat-icon-large {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value-large {
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.stat-label-small {
+  font-size: 0.82rem;
+}
+
+@media (max-width: 350px) {
+  .stat-value-large { font-size: 1.1rem; }
+  .temp-value-display { font-size: 1.5rem; }
+  .forecast-item { min-width: 100% !important; padding: 0.5rem !important; }
+  .forecast-day-name { min-width: 60px; font-size: 0.75rem; }
+  .weather-banner { padding: 1rem !important; }
+}
+
+.stat-sub-text {
+  font-size: 0.75rem;
+  margin-top: 0.2rem;
+}
+
+.weather-banner {
+  background: linear-gradient(135deg, var(--as-dark-green), var(--as-accent-green));
+  border-radius: 20px;
+}
+
+.weather-banner-title {
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+}
+
+.weather-banner-desc {
+  font-size: 0.85rem;
+  color: var(--as-light-green) !important;
+}
+
+.temp-badge-box {
+  background: rgba(82, 183, 136, 0.15);
+  border: 1px solid rgba(82, 183, 136, 0.3);
+  border-radius: 14px;
+  min-width: 100px;
+}
+
+.temp-value-display {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.forecast-item {
+  border-color: var(--as-bg-light) !important;
+  gap: 0.5rem;
+  min-width: 300px;
+}
+
+.forecast-icon {
+  font-size: 1.2rem;
+}
+
+.forecast-day-name {
+  font-size: 0.85rem;
+  min-width: 85px;
+}
+
+.forecast-temp {
+  font-size: 0.85rem;
+}
+
+.forecast-rain {
+  font-size: 0.78rem;
+  color: #4db6e4 !important;
+}
+
+.saved-item-card {
+  background: var(--as-bg-light) !important;
+  border: none !important;
+}
+
+.saved-item-title {
+  font-size: 0.88rem;
+}
+
+.saved-item-note {
+  font-size: 0.75rem;
+}
+
+.empty-state-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state-text {
+  font-size: 0.85rem;
+}
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+/* Tablet and below → 2 per row */
+@media (max-width: 992px) {
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Ultra small → still 2 per row but tighter gap */
+@media (max-width: 360px) {
+  .overview-grid {
+    gap: 0.6rem;
+  }
+}
+
+/* Absolute minimum (320px) — still 2 per row, just smaller padding */
+@media (max-width: 320px) {
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+}
+
+/* ── Timing badge in banner ── */
+.overview-timing-badge {
+  font-size: 0.7rem;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-weight: 700;
+  background: white;
+  color: #1b4332;
+}
+
+/* ── Rain timing sub-label in forecast row ── */
+.forecast-rain-timing {
+  font-size: 0.68rem;
+  opacity: 0.8;
+  font-weight: 600;
+}
+
+/* ── Activity mini-matrix ── */
+.activity-matrix {
+  min-width: 75px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+.activity-matrix-icon {
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.activity-matrix-more {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.activity-matrix-empty {
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+/* ── Suitability badge in forecast row ── */
+.suitability-badge {
+  min-width: 75px;
+  text-align: center;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.suitability-badge-optimal    { background-color: #52b788; }
+.suitability-badge-suitable   { background-color: #4db6e4; }
+.suitability-badge-restricted { background-color: #f4a261; }
+.suitability-badge-unsafe     { background-color: #e63946; }
+
+/* ── Overnight badge in alert banner ── */
+.overnight-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.3);
+  color: white;
+}
+
+/* ── Saved date preview rows ── */
+.saved-preview-title {
+  font-size: 0.82rem;
+}
+
+.saved-preview-sub {
+  font-size: 0.75rem;
+}
+
+.saved-preview-note {
+  font-size: 0.75rem;
+  max-width: 180px;
+}
+
+.saved-preview-delete {
+  font-size: 0.75rem;
+}
+
+/* ── Forecast row min widths ── */
+.forecast-day-col  { min-width: 70px; }
+.forecast-temp-col { min-width: 45px; }
+.forecast-rain-col { min-width: 85px; }
+
+/* ── Activity pill list in forecast table ── */
+.activity-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  min-width: 120px;
+  max-width: 160px;
+}
+
+.activity-pill {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 20px;
+  background: rgba(45, 106, 79, 0.1);
+  color: #1b4332;
+  border: 1px solid rgba(45, 106, 79, 0.2);
+  white-space: nowrap;
+}
+
+.activity-pill-more {
+  background: rgba(107, 114, 128, 0.1);
+  color: #6b7280;
+  border-color: rgba(107, 114, 128, 0.2);
+}
+
+.activity-pill-none {
+  background: rgba(248, 113, 113, 0.08);
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.2);
+}
+
+/* ══════════════════════════════════════
+   Forecast Preview Table
+══════════════════════════════════════ */
+.fp-table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.fp-table-header,
+.fp-table-row {
+  display: grid;
+  grid-template-columns: 72px 64px 72px 1fr 88px 68px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 4px;
+}
+
+.fp-table-header {
+  border-bottom: 2px solid #d1e8da;
+  margin-bottom: 4px;
+  padding-bottom: 6px;
+}
+
+.fp-table-header > div {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--as-text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.fp-table-row {
+  border-bottom: 1px solid #d1e8da;
+  border-left: 3px solid transparent;
+  transition: background 0.15s;
+  border-radius: 0 6px 6px 0;
+  padding-left: 6px;
+}
+
+.fp-table-row:nth-child(even) {
+  background: rgba(45, 106, 79, 0.03);
+}
+
+.fp-table-row:hover {
+  background: rgba(45, 106, 79, 0.07);
+}
+
+.fp-table-row:last-child {
+  border-bottom: none;
+}
+
+/* ── Left border color by status ── */
+.fp-row-optimal    { border-left-color: #52b788; }
+.fp-row-suitable   { border-left-color: #4db6e4; }
+.fp-row-restricted { border-left-color: #f4a261; }
+.fp-row-unsafe     { border-left-color: #e63946; }
+
+/* ── Columns ── */
+.fp-col-day {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fp-col-temp,
+.fp-col-rain {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fp-col-activities { min-width: 0; }
+
+.fp-col-status {
+  display: flex;
+  justify-content: center;
+}
+
+.fp-col-action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ── Day cell ── */
+.fp-weather-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+.fp-day-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--as-text-primary);
+  line-height: 1.2;
+}
+
+.fp-day-date {
+  font-size: 0.68rem;
+  color: var(--as-text-soft);
+}
+
+/* ── Temp cell ── */
+.fp-temp-value {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--as-text-primary);
+  line-height: 1.2;
+}
+
+.fp-temp-range {
+  font-size: 0.65rem;
+  color: var(--as-text-soft);
+}
+
+/* ── Rain cell ── */
+.fp-rain-value {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #4db6e4;
+  line-height: 1.2;
+}
+
+.fp-timing-tag {
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--as-text-soft);
+  white-space: nowrap;
+}
+
+/* ── Activity pills ── */
+.fp-activity-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  align-items: center;
+}
+
+.fp-activity-pill {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 20px;
+  background: rgba(45, 106, 79, 0.08);
+  color: var(--as-dark-green);
+  border: 1px solid rgba(45, 106, 79, 0.18);
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.fp-pill-more {
+  background: rgba(107, 114, 128, 0.08);
+  color: var(--as-text-soft);
+  border-color: rgba(107, 114, 128, 0.18);
+}
+
+.fp-no-activity {
+  font-size: 0.75rem;
+  color: var(--as-text-soft);
+  font-style: italic;
+}
+
+/* ── Status badges ── */
+.fp-status-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  color: white;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.fp-status-optimal    { background: #52b788; }
+.fp-status-suitable   { background: #4db6e4; }
+.fp-status-restricted { background: #f4a261; }
+.fp-status-unsafe     { background: #e63946; }
+
+/* ── Save button ── */
+.fp-save-btn {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+.fp-save-btn-active {
+  background: var(--as-dark-green);
+  color: white;
+}
+
+.fp-save-btn-active:hover { opacity: 0.85; }
+
+.fp-save-btn-saved {
+  background: transparent;
+  color: var(--as-primary-green);
+  border: 1px solid var(--as-primary-green);
+  cursor: default;
+}
+
+/* ══════════════════════════════════════
+   MOBILE — hide status column, use border
+══════════════════════════════════════ */
+@media (max-width: 600px) {
+  .fp-table-header,
+  .fp-table-row {
+    /* Remove status column from grid */
+    grid-template-columns: 60px 54px 62px 1fr 58px;
+    gap: 5px;
+  }
+
+  /* Hide status column header and cells on mobile */
+  .fp-col-status { display: none; }
+
+  /* The colored left border now communicates status instead */
+
+  .fp-activity-pill {
+    font-size: 0.6rem;
+    padding: 1px 5px;
+  }
+
+  .fp-save-btn {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+
+  .fp-day-name { font-size: 0.75rem; }
+  .fp-temp-value { font-size: 0.78rem; }
+  .fp-rain-value { font-size: 0.75rem; }
+}
+
+@media (max-width: 380px) {
+  .fp-table-header {
+    display: none;
+  }
+
+  .fp-table-row {
+    grid-template-columns: 54px 50px 56px 1fr 52px;
+    gap: 4px;
+  }
+
+  .fp-save-btn {
+    font-size: 0.65rem;
+    padding: 3px 6px;
+  }
+}

@@ -1,0 +1,471 @@
+/* PestChecker.css */
+
+/* ── Step Indicator ── */
+.pc-steps {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 1.75rem;
+}
+
+.pc-step-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  border: 2px solid rgba(82, 183, 136, 0.25);
+  background: #fff;
+  color: var(--as-soft-green);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.pc-step-dot.active {
+  background: var(--as-primary-green);
+  border-color: var(--as-primary-green);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(82, 183, 136, 0.35);
+}
+
+.pc-step-dot.done {
+  background: rgba(82, 183, 136, 0.15);
+  border-color: var(--as-primary-green);
+  color: var(--as-primary-green);
+}
+
+.pc-step-line {
+  flex: 1;
+  height: 2px;
+  background: rgba(82, 183, 136, 0.2);
+  transition: background 0.3s;
+}
+
+.pc-step-line.done {
+  background: var(--as-primary-green);
+}
+
+/* ── Step labels ── */
+.pc-step-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.35rem;
+  margin-bottom: 1.5rem;
+}
+
+.pc-step-label {
+  font-size: 0.72rem;
+  color: var(--as-soft-green);
+  font-weight: 500;
+  flex: 1;
+  text-align: center;
+}
+
+.pc-step-label:first-child { text-align: left; }
+.pc-step-label:last-child  { text-align: right; }
+
+.pc-step-label.active {
+  color: var(--as-primary-green);
+  font-weight: 700;
+}
+
+/* ── Section title ── */
+.pc-section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--as-dark-green);
+  margin-bottom: 0.4rem;
+}
+
+.pc-section-sub {
+  font-size: 0.82rem;
+  color: var(--as-soft-green);
+  margin-bottom: 1.25rem;
+}
+
+/* ── Crop Select ── */
+.pc-select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
+  border: 1.5px solid rgba(82, 183, 136, 0.3);
+  background: var(--as-bg-light, #f8fdf9);
+  color: var(--as-dark-green);
+  font-size: 0.92rem;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2352b788' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 14px;
+  padding-right: 2.5rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.pc-select:focus {
+  border-color: var(--as-primary-green);
+  box-shadow: 0 0 0 3px rgba(82, 183, 136, 0.15);
+}
+
+/* ── Symptom Pills Grid ── */
+.pc-pills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 400px) {
+  .pc-pills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.pc-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 30px;
+  border: 1.5px solid rgba(82, 183, 136, 0.25);
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--as-dark-green);
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+  user-select: none;
+  line-height: 1.3;
+}
+
+.pc-pill:hover {
+  border-color: var(--as-primary-green);
+  background: rgba(82, 183, 136, 0.06);
+}
+
+.pc-pill.selected {
+  border-color: var(--as-primary-green);
+  background: rgba(82, 183, 136, 0.12);
+  color: var(--as-primary-green);
+  box-shadow: 0 0 0 2px rgba(82, 183, 136, 0.18);
+}
+
+.pc-pill-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ── Buttons Row ── */
+.pc-btn-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.pc-btn-back {
+  background: transparent;
+  border: 1.5px solid rgba(82, 183, 136, 0.3);
+  border-radius: 10px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--as-soft-green);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.pc-btn-back:hover {
+  background: rgba(82, 183, 136, 0.07);
+  border-color: var(--as-primary-green);
+  color: var(--as-dark-green);
+}
+
+.pc-btn-next {
+  background: var(--as-primary-green);
+  border: none;
+  border-radius: 10px;
+  padding: 0.55rem 1.4rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 8px rgba(82, 183, 136, 0.3);
+}
+
+.pc-btn-next:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.pc-btn-next:not(:disabled):hover {
+  opacity: 0.88;
+}
+
+.pc-btn-reset {
+  background: rgba(82, 183, 136, 0.08);
+  border: 1.5px solid rgba(82, 183, 136, 0.2);
+  border-radius: 10px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--as-primary-green);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.pc-btn-reset:hover {
+  background: rgba(82, 183, 136, 0.15);
+}
+
+/* ── Loading ── */
+.pc-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem;
+  gap: 1rem;
+  color: var(--as-soft-green);
+  font-size: 0.9rem;
+}
+
+/* ── Results Summary ── */
+.pc-results-summary {
+  font-size: 0.88rem;
+  color: var(--as-soft-green);
+  margin-bottom: 1.1rem;
+  font-weight: 500;
+}
+
+.pc-results-summary strong {
+  color: var(--as-dark-green);
+}
+
+/* ── Result Card ── */
+.pc-result-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid rgba(82, 183, 136, 0.12);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.2s;
+}
+
+.pc-result-card:hover {
+  box-shadow: 0 4px 18px rgba(82, 183, 136, 0.13);
+}
+
+.pc-result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.1rem;
+  cursor: pointer;
+  background: rgba(82, 183, 136, 0.03);
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid transparent;
+  transition: background 0.15s;
+}
+
+.pc-result-header:hover {
+  background: rgba(82, 183, 136, 0.07);
+}
+
+.pc-result-header.open {
+  border-bottom-color: rgba(82, 183, 136, 0.1);
+}
+
+.pc-result-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--as-dark-green);
+  margin: 0;
+}
+
+.pc-result-badges {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Type badge */
+.pc-badge-type {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.pc-badge-pest    { background: rgba(239, 68, 68, 0.1);  color: #b91c1c; }
+.pc-badge-disease { background: rgba(234, 179, 8, 0.12); color: #92400e; }
+
+/* Severity badge */
+.pc-badge-severity {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.pc-severity-low      { background: rgba(34, 197, 94, 0.1);  color: #15803d; }
+.pc-severity-moderate { background: rgba(234, 179, 8, 0.12); color: #92400e; }
+.pc-severity-high     { background: rgba(239, 68, 68, 0.1);  color: #b91c1c; }
+
+/* Toggle chevron */
+.pc-result-chevron {
+  color: var(--as-primary-green);
+  font-size: 1rem;
+  transition: transform 0.22s ease;
+  flex-shrink: 0;
+}
+.pc-result-chevron.open { transform: rotate(180deg); }
+
+/* ── Result Body ── */
+.pc-result-body {
+  padding: 1rem 1.1rem;
+  animation: fadeSlideDown 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pc-result-section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--as-soft-green);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.25rem;
+}
+
+.pc-result-section-label i {
+  color: var(--as-primary-green);
+  font-size: 0.85rem;
+}
+
+.pc-result-section-text {
+  font-size: 0.85rem;
+  color: var(--as-dark-green);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Match bar ── */
+.pc-match-bar-wrap {
+  padding-top: 0.75rem;
+  border-top: 1px dashed rgba(82, 183, 136, 0.2);
+}
+
+.pc-match-bar-label {
+  font-size: 0.75rem;
+  color: var(--as-soft-green);
+  margin-bottom: 0.35rem;
+}
+
+.pc-match-bar-track {
+  height: 6px;
+  background: rgba(82, 183, 136, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.pc-match-bar-fill {
+  height: 100%;
+  background: var(--as-primary-green);
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+/* ── No results empty state ── */
+.pc-no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.pc-no-results-icon {
+  font-size: 2.8rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ── AI Advice Card ── */
+.pc-ai-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid rgba(82, 183, 136, 0.15);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+
+.pc-ai-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid rgba(82, 183, 136, 0.1);
+  background: rgba(82, 183, 136, 0.04);
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pc-ai-card-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--as-dark-green);
+}
+
+.pc-ai-card-body {
+  padding: 1rem 1.1rem;
+}
+
+.pc-ai-advice-box {
+  border-left: 3px solid var(--as-primary-green);
+  background: rgba(82, 183, 136, 0.05);
+  border-radius: 0 10px 10px 0;
+  padding: 0.85rem 1rem;
+  font-size: 0.86rem;
+  color: var(--as-dark-green);
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+  white-space: pre-line;
+}
+
+.pc-ai-disclaimer {
+  font-size: 0.72rem;
+  color: var(--as-soft-green);
+  font-style: italic;
+}
+
+/* ── Empty state (no crop profiles) ── */
+.pc-empty-state {
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.pc-empty-icon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+}
