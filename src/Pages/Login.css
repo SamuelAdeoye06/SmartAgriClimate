@@ -28,7 +28,7 @@
   width: 350px;
   height: 350px;
   border-radius: 50%;
-  background: rgba(82, 183, 136, 0.12);
+  display: none;
   top: -80px;
   right: -80px;
   pointer-events: none;
@@ -39,7 +39,7 @@
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  background: rgba(82, 183, 136, 0.08);
+  display: none;
   bottom: 80px;
   left: -60px;
   pointer-events: none;
@@ -50,7 +50,7 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: rgba(82, 183, 136, 0.1);
+  display: none;
   bottom: -30px;
   right: 60px;
   pointer-events: none;
@@ -249,7 +249,7 @@
 }
 
 .auth-submit-btn {
-  background: linear-gradient(135deg, var(--as-primary-green), var(--as-dark-green)) !important;
+  background: var(--as-accent-green) !important;
   color: white !important;
   border-radius: 12px !important;
   font-weight: 700 !important;

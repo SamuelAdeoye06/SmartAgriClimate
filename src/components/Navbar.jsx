@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -7,12 +7,12 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg sticky-top px-4 as-navbar">
-      <div className="navbar-brand d-flex align-items-center gap-2">
+      <Link to="/" className="navbar-brand d-flex align-items-center gap-2 text-decoration-none">
         <i className="bi bi-cloud-sun-fill text-success fs-4"></i>
         <span className="as-navbar-logo-text">
           SmartAgriClimate
         </span>
-      </div>
+      </Link>
 
       <button
         className="navbar-toggler border-0 ms-auto me-3 as-navbar-toggler"

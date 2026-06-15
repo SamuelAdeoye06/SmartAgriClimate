@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setError(null)
       const { data } = await api.post('/auth/register', formData)
-      saveSession(data.token, data.user)   // ✅ correct
+      saveSession(data.token, data.user)   // correct
       navigate('/dashboard/overview')
     } catch (err) {
       const message = err.response?.data?.message || 'Registration failed. Please try again.'
@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setError(null)
       const { data } = await api.post('/auth/login', formData)
-      saveSession(data.token, data.user)   // ✅ correct
+      saveSession(data.token, data.user)   // correct
 
       if (data.user.role === 'super_admin' || data.user.role === 'admin') {
         navigate('/admin/overview')
@@ -100,7 +100,7 @@ export const AuthProvider = ({ children }) => {
 
   const updateUser = (updatedUser) => {
     setUser(updatedUser)
-    localStorage.setItem(USER_KEY, JSON.stringify(updatedUser))  // ✅ consistent key
+    localStorage.setItem(USER_KEY, JSON.stringify(updatedUser))  // consistent key
   }
 
   const uploadAvatar = async (base64Image, isRetry = false) => {

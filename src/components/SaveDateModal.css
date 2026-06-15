@@ -89,7 +89,7 @@
 }
 
 .as-modal-btn-save {
-  background: linear-gradient(135deg, #52b788, #1b4332) !important;
+  background: var(--as-accent-green) !important;
   color: white !important;
   border: none !important;
   border-radius: 12px !important;

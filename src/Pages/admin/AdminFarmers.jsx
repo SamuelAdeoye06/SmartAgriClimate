@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useAdmin } from '../../context/DashboardContext'
+import { Icon } from '../../utils/iconMap'
 import './AdminFarmers.css'
 
 const StatusBadge = ({ status }) => (
@@ -153,7 +154,7 @@ const AdminFarmers = () => {
                   <StatusBadge status={u.status} />
                 </div>
                 <div className="as-text-soft farmer-mobile-meta">
-                  📍 {u.location} &nbsp;·&nbsp; 📅 {u.saved} saved &nbsp;·&nbsp; Joined {u.joined}
+                  <Icon name="location" className="me-1" />{u.location} &nbsp;·&nbsp; <Icon name="calendar" className="me-1" />{u.saved} saved &nbsp;·&nbsp; Joined {u.joined}
                 </div>
                 <div className="d-flex gap-2">
                   <button
@@ -182,7 +183,7 @@ const AdminFarmers = () => {
         <div className="farmer-modal-overlay" onClick={closeDelete}>
           <div className="as-card farmer-delete-modal-card" onClick={(e) => e.stopPropagation()}>
             <div className="text-center mb-4">
-              <div className="delete-icon-circle">🗑️</div>
+              <div className="delete-icon-circle"><Icon name="trash" /></div>
               <h5 className="as-text-primary fw-bold mb-2">Delete Farmer Account?</h5>
               <p className="as-text-soft m-0 delete-modal-text">
                 You are about to permanently delete{' '}

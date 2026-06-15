@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAdmin } from '../../context/DashboardContext'
+import { Icon } from '../../utils/iconMap'
 import './AdminAdmins.css'
 
 const RoleBadge = ({ role }) => (
   <span className={`as-badge ${role === 'super_admin' ? 'as-badge-super' : 'as-badge-active'} px-3`}>
-    {role === 'super_admin' ? '★ Super Admin' : 'Admin'}
+    {role === 'super_admin' ? <><Icon name="admin" className="me-1" />Super Admin</> : 'Admin'}
   </span>
 )
 
@@ -218,7 +219,7 @@ const AdminAdmins = () => {
         <div className="admin-modal-overlay" onClick={closeDelete}>
           <div className="as-card admin-delete-modal-card" onClick={(e) => e.stopPropagation()}>
             <div className="text-center mb-4">
-              <div className="delete-icon-wrapper">🗑️</div>
+              <div className="delete-icon-wrapper"><Icon name="trash" /></div>
               <h5 className="as-text-primary fw-bold mb-2">Delete Admin Account?</h5>
               <p className="as-text-soft m-0 delete-modal-desc">
                 You are about to permanently remove{' '}

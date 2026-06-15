@@ -17,7 +17,7 @@
   background: var(--as-white);
   border-radius: 20px;
   padding: 1.5rem;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
   height: 100%;
 }
 
@@ -30,7 +30,7 @@
 
 .as-card-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.2s ease;
 }
 
@@ -42,9 +42,17 @@
   font-family: 'Georgia', serif;
 }
 
-.as-text-primary { color: var(--as-dark-green); }
-.as-text-soft { color: var(--as-soft-green); }
-.as-text-accent { color: var(--as-accent-green); }
+.as-text-primary {
+  color: var(--as-dark-green);
+}
+
+.as-text-soft {
+  color: var(--as-soft-green);
+}
+
+.as-text-accent {
+  color: var(--as-accent-green);
+}
 
 /* Badges */
 .as-badge {
@@ -80,7 +88,7 @@
 }
 
 .as-avatar-placeholder {
-  background: linear-gradient(135deg, var(--as-primary-green), var(--as-dark-green));
+  background: var(--as-accent-green);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,8 +131,13 @@
   padding: 0.9rem 1rem;
 }
 
-.as-table td:first-child { border-radius: 10px 0 0 10px; }
-.as-table td:last-child { border-radius: 0 10px 10px 0; }
+.as-table td:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+.as-table td:last-child {
+  border-radius: 0 10px 10px 0;
+}
 
 /* Buttons */
 .as-btn {
@@ -139,7 +152,7 @@
 }
 
 .as-btn-primary {
-  background: linear-gradient(135deg, var(--as-primary-green), var(--as-dark-green));
+  background: var(--as-accent-green);
   color: white;
 }
 
@@ -188,7 +201,7 @@
   font-size: 0.82rem;
   font-weight: 600;
   display: block;
-  marginBottom: 0.4rem;
+  margin-bottom: 0.4rem;
 }
 
 /* Layout */
@@ -219,23 +232,32 @@
 /* --- iPhone 5 & Tiny Screen Optimizations --- */
 @media (max-width: 350px) {
   :root {
-    font-size: 14px; /* Slightly shrink base font */
+    font-size: 14px;
+    /* Slightly shrink base font */
   }
-  
-  .container, .container-fluid {
+
+  .container,
+  .container-fluid {
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
-  
+
   .as-card {
     padding: 0.75rem;
   }
-  
+
   .as-badge {
     padding: 0.15rem 0.5rem;
     font-size: 0.65rem;
   }
-  
-  h5, .h5 { font-size: 1.1rem; }
-  h6, .h6 { font-size: 1rem; }
+
+  h5,
+  .h5 {
+    font-size: 1.1rem;
+  }
+
+  h6,
+  .h6 {
+    font-size: 1rem;
+  }
 }

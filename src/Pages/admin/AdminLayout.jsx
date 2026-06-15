@@ -1,10 +1,58 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useEffect } from 'react'
 import { Outlet, NavLink, useNavigate, Link } from 'react-router-dom'
 import { useAdmin } from '../../context/DashboardContext'
 import { useAuth } from '../../context/AuthContext'
 import useProtectedRoute from '../../hooks/useAuth'
+import { Icon } from '../../utils/iconMap'
 import './AdminLayout.css'
+
+const AdminSidebar = ({ navItems, onNav, isSuperAdmin, adminName, onAddAdmin, onLogout }) => (
+  <>
+    <Link to="/" onClick={onNav} className="d-flex align-items-center gap-2 mb-4 px-2 text-decoration-none">
+      <i className="bi bi-cloud-sun-fill text-success fs-5"></i>
+      <div>
+        <div className="sidebar-logo-text">SmartAgriClimate</div>
+        <div className="sidebar-logo-sub">Admin Panel</div>
+      </div>
+    </Link>
+
+    <div className="sidebar-user-pill">
+      <div className="user-pill-label">Signed in as</div>
+      <div className="user-pill-name">
+        {isSuperAdmin ? <><Icon name="admin" className="me-1" />Super Admin</> : 'Admin'}
+      </div>
+      <div className="user-pill-email">{adminName}</div>
+    </div>
+
+    <nav className="flex-grow-1">
+      {navItems.map((item) => (
+        <NavLink
+          key={item.to}
+          to={item.to}
+          onClick={onNav}
+          className={({ isActive }) =>
+            `nav-link-base ${isActive ? 'nav-link-active' : 'nav-link-inactive'}`
+          }
+        >
+          <i className={`bi ${item.icon} fs-5`}></i>
+          {item.label}
+        </NavLink>
+      ))}
+    </nav>
+
+    <div className="sidebar-footer">
+      {isSuperAdmin && (
+        <button onClick={onAddAdmin} className="sidebar-btn-add">
+          <i className="bi bi-person-plus"></i> Add Admin
+        </button>
+      )}
+      <button onClick={onLogout} className="sidebar-btn-logout">
+        <i className="bi bi-box-arrow-right"></i> Logout
+      </button>
+    </div>
+  </>
+)
 
 const AdminLayout = () => {
   useProtectedRoute(['admin', 'super_admin'])
@@ -30,58 +78,22 @@ const AdminLayout = () => {
     { to: 'settings',      icon: 'bi-gear',         label: 'Settings'      },
   ]
 
-  const Sidebar = ({ onNav }) => (
-    <>
-      <div className="d-flex align-items-center gap-2 mb-4 px-2">
-        <i className="bi bi-cloud-sun-fill text-success fs-5"></i>
-        <div>
-          <div className="sidebar-logo-text">SmartAgriClimate</div>
-          <div className="sidebar-logo-sub">Admin Panel</div>
-        </div>
-      </div>
-
-      <div className="sidebar-user-pill">
-        <div className="user-pill-label">Signed in as</div>
-        <div className="user-pill-name">
-          {isSuperAdmin ? '★ Super Admin' : 'Admin'}
-        </div>
-        <div className="user-pill-email">{adminName}</div>
-      </div>
-
-      <nav className="flex-grow-1">
-        {navItems.map((item) => (
-          <NavLink
-            key={item.to}
-            to={item.to}
-            onClick={onNav}
-            className={({ isActive }) => 
-              `nav-link-base ${isActive ? 'nav-link-active' : 'nav-link-inactive'}`
-            }
-          >
-            <i className={`bi ${item.icon} fs-5`}></i>
-            {item.label}
-          </NavLink>
-        ))}
-      </nav>
-
-      <div className="sidebar-footer">
-        {isSuperAdmin && (
-          <button onClick={() => { navigate('/admin/register'); onNav?.() }} className="sidebar-btn-add">
-            <i className="bi bi-person-plus"></i> Add Admin
-          </button>
-        )}
-        <button onClick={handleLogout} className="sidebar-btn-logout">
-          <i className="bi bi-box-arrow-right"></i> Logout
-        </button>
-      </div>
-    </>
-  )
+  const handleAddAdmin = (onNav) => {
+    navigate('/admin/register')
+    onNav?.()
+  }
 
   return (
     <div className="admin-layout-wrapper">
       {/* Desktop sidebar */}
       <div className="d-none d-lg-flex sidebar-base sidebar-desktop">
-        <Sidebar />
+        <AdminSidebar
+          navItems={navItems}
+          isSuperAdmin={isSuperAdmin}
+          adminName={adminName}
+          onAddAdmin={() => handleAddAdmin()}
+          onLogout={handleLogout}
+        />
       </div>
 
       {/* Mobile sidebar */}
@@ -90,7 +102,14 @@ const AdminLayout = () => {
         className="d-lg-none sidebar-base sidebar-mobile"
         style={{ transform: sidebarOpen ? 'translateX(0)' : 'translateX(-100%)' }}
       >
-        <Sidebar onNav={() => setSidebarOpen(false)} />
+        <AdminSidebar
+          navItems={navItems}
+          onNav={() => setSidebarOpen(false)}
+          isSuperAdmin={isSuperAdmin}
+          adminName={adminName}
+          onAddAdmin={() => handleAddAdmin(() => setSidebarOpen(false))}
+          onLogout={handleLogout}
+        />
       </div>
 
       {/* Main Content Area */}
@@ -105,7 +124,7 @@ const AdminLayout = () => {
               <div className="d-flex align-items-center gap-2 flex-wrap">
                 <p className="topbar-subtitle">SmartAgriClimate · {adminName}</p>
                 <span className={`topbar-role-badge ${isSuperAdmin ? 'topbar-role-badge-super' : ''}`}>
-                  {isSuperAdmin ? '★ Super Admin' : 'Admin'}
+                  {isSuperAdmin ? <><Icon name="admin" className="me-1" />Super Admin</> : 'Admin'}
                 </span>
               </div>
             </div>

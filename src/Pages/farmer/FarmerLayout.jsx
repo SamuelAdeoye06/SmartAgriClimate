@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useEffect } from 'react'
-import { Outlet, NavLink, useNavigate, Link } from 'react-router-dom'
+import { Outlet, NavLink, Link } from 'react-router-dom'
 import { useFarmer } from '../../context/DashboardContext'
 import { useAuth } from '../../context/AuthContext'
 import useProtectedRoute from '../../hooks/useAuth'
@@ -21,6 +21,36 @@ const navItems = [
   { to: 'settings',  icon: 'bi-gear',             label: 'Settings'    },
 ]
 
+const Sidebar = ({ onNav, onLogout }) => (
+  <>
+    <Link to="/" onClick={onNav} className="d-flex align-items-center gap-2 mb-5 px-2 text-decoration-none">
+      <span className="farmer-sidebar-logo-icon"><i className="bi bi-cloud-sun-fill text-success fs-5"></i></span>
+      <span className="farmer-sidebar-logo-text">SmartAgriClimate</span>
+    </Link>
+    <nav className="flex-grow-1">
+      {navItems.map((item) => (
+        <NavLink
+          key={item.to}
+          to={item.to}
+          onClick={onNav}
+          className={({ isActive }) =>
+            `farmer-nav-item ${isActive ? 'farmer-nav-item-active' : 'farmer-nav-item-inactive'}`
+          }
+        >
+          <i className={`bi ${item.icon} fs-5`}></i>
+          {item.label}
+        </NavLink>
+      ))}
+    </nav>
+    <div className="farmer-sidebar-footer">
+      <button onClick={onLogout} className="farmer-logout-sidebar-btn">
+        <i className="bi bi-box-arrow-right"></i> Logout
+      </button>
+      <p className="farmer-version-text">SmartAgriClimate v1.0</p>
+    </div>
+  </>
+)
+
 const FarmerLayout = () => {
   useProtectedRoute('farmer')
   const { farmerName, location } = useFarmer()
@@ -33,45 +63,13 @@ const FarmerLayout = () => {
       document.body.style.overflow = 'auto'
     }
   }, [sidebarOpen])
-  const navigate = useNavigate()
-
   const handleLogout = () => logout()
-
-  const Sidebar = ({ onNav }) => (
-    <>
-      <div className="d-flex align-items-center gap-2 mb-5 px-2">
-        <span className="farmer-sidebar-logo-icon"><i className="bi bi-cloud-sun-fill text-success fs-5"></i></span>
-        <span className="farmer-sidebar-logo-text">SmartAgriClimate</span>
-      </div>
-      <nav className="flex-grow-1">
-        {navItems.map((item) => (
-          <NavLink
-            key={item.to}
-            to={item.to}
-            onClick={onNav}
-            className={({ isActive }) => 
-              `farmer-nav-item ${isActive ? 'farmer-nav-item-active' : 'farmer-nav-item-inactive'}`
-            }
-          >
-            <i className={`bi ${item.icon} fs-5`}></i>
-            {item.label}
-          </NavLink>
-        ))}
-      </nav>
-      <div className="farmer-sidebar-footer">
-        <button onClick={handleLogout} className="farmer-logout-sidebar-btn">
-          <i className="bi bi-box-arrow-right"></i> Logout
-        </button>
-        <p className="farmer-version-text">SmartAgriClimate v1.0</p>
-      </div>
-    </>
-  )
 
   return (
     <div className="farmer-layout-wrapper">
       {/* Desktop sidebar */}
       <div className="d-none d-lg-flex farmer-sidebar-base farmer-sidebar-desktop">
-        <Sidebar />
+        <Sidebar onLogout={handleLogout} />
       </div>
 
       {/* Mobile sidebar */}
@@ -80,7 +78,7 @@ const FarmerLayout = () => {
         className="d-lg-none farmer-sidebar-base farmer-sidebar-mobile"
         style={{ transform: sidebarOpen ? 'translateX(0)' : 'translateX(-100%)' }}
       >
-        <Sidebar onNav={() => setSidebarOpen(false)} />
+        <Sidebar onNav={() => setSidebarOpen(false)} onLogout={handleLogout} />
       </div>
 
       {/* Main content */}
@@ -92,7 +90,7 @@ const FarmerLayout = () => {
             </button>
             <div>
               <h6 className="farmer-greeting-title">
-                {getGreeting()}, {farmerName.split(' ')[0]} 👋
+                {getGreeting()}, {farmerName.split(' ')[0]}
               </h6>
               <p className="farmer-topbar-location">
                 <i className="bi bi-geo-alt me-1"></i>{location}

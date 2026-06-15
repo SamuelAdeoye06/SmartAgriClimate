@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useAdmin } from '../../context/DashboardContext'
 import { useAuth } from '../../context/AuthContext'
 import api from '../../api/axios'
 import ProfileImageModal from '../../components/ProfileImageModal'
+import { Icon } from '../../utils/iconMap'
 import './AdminSettings.css'
 
 const AdminSettings = () => {
@@ -105,7 +106,7 @@ const AdminSettings = () => {
             <div>
               <label className="as-label">Role</label>
               <div className="as-badge as-badge-super px-3 py-2">
-                {isSuperAdmin ? '★ Super Admin' : 'Admin'}
+                {isSuperAdmin ? <><Icon name="admin" className="me-1" />Super Admin</> : 'Admin'}
               </div>
             </div>
           </div>

@@ -95,7 +95,7 @@ const NotFound = () => {
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           {dashboardPath ? (
             <Link to={dashboardPath} style={{
-              background: 'linear-gradient(135deg, #2d6a4f, #52b788)',
+              background: '#2d6a4f',
               color: 'white', textDecoration: 'none',
               padding: '12px 28px', borderRadius: '50px',
               fontWeight: 600, fontSize: '0.95rem',
@@ -106,7 +106,7 @@ const NotFound = () => {
             </Link>
           ) : (
             <Link to="/login" style={{
-              background: 'linear-gradient(135deg, #2d6a4f, #52b788)',
+              background: '#2d6a4f',
               color: 'white', textDecoration: 'none',
               padding: '12px 28px', borderRadius: '50px',
               fontWeight: 600, fontSize: '0.95rem',

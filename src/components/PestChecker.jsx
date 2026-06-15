@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useFarmer } from '../context/DashboardContext'
 import { identifyPest, getAIAdvice } from '../services/advisory.service'
+import { Icon } from '../utils/iconMap'
 import './PestChecker.css'
 
-// ── Category metadata (emoji + display name) ──
+// ── Category metadata ──
 const CATEGORY_META = {
     grains:     { icon: '🌾', name: 'Grains & Cereals'   },
     tubers:     { icon: '🥔', name: 'Tubers & Roots'     },
@@ -156,7 +157,7 @@ const AIAdviceBlock = ({ cropCategory, symptoms, matches, farmerName, weatherSum
     return (
         <div className="pc-ai-card">
             <div className="pc-ai-card-header">
-                <span className="pc-ai-card-title">🤖 AI Advisory</span>
+                <span className="pc-ai-card-title"><Icon name="ai" className="me-1" /> Advisory</span>
                 {!fetched && (
                     <button
                         className="as-btn as-btn-primary"

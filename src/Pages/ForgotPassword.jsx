@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../api/axios'
+import { Icon } from '../utils/iconMap'
 import './Login.css'
 import './ForgotPassword.css'
 
@@ -100,10 +101,10 @@ const ForgotPassword = () => {
             {/* ── Right panel ── */}
             <div className="auth-right-panel">
 
-                <div className="d-flex d-lg-none auth-mobile-header">
+                <Link to="/" className="d-flex d-lg-none auth-mobile-header text-decoration-none">
                     <i className="bi bi-cloud-sun-fill text-success fs-4 me-2"></i>
                     <span className="auth-logo-text">SmartAgriClimate</span>
-                </div>
+                </Link>
 
                 <div className="flex-grow-1 d-flex align-items-center justify-content-center p-4">
                     <div className="auth-form-wrapper">
@@ -113,7 +114,7 @@ const ForgotPassword = () => {
                             {stepLabels.map((label, i) => (
                                 <div key={i} className="fp-step-block">
                                     <div className={`fp-step-circle ${i + 1 <= step ? 'active' : 'inactive'}`}>
-                                        {i + 1 < step ? '✓' : i + 1}
+                                        {i + 1 < step ? <Icon name="clear" /> : i + 1}
                                     </div>
                                     <span className={`fp-step-label ${i + 1 <= step ? 'active' : 'inactive'}`}>
                                         {label}

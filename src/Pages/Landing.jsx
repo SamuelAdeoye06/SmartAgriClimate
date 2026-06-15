@@ -9,16 +9,18 @@ const features = [
   { icon: <i className="bi bi-geo-alt-fill text-success fs-3"></i>, title: 'Location-Based Forecasts', description: 'Farmers save a Nigerian city and state, then SmartAgriClimate fetches a 7-day forecast for that exact farm area.', accent: true },
   { icon: <i className="bi bi-check-circle-fill text-success fs-3"></i>, title: 'Daily Farming Decisions', description: 'Each day is labelled Optimal, Suitable, Restricted, or Unsafe based on the activities the weather can support.' },
   { icon: <i className="bi bi-list-check text-success fs-3"></i>, title: 'Eight Activity Checks', description: 'The engine checks planting, harvesting, spraying, irrigation, weeding, tillage, fertilizing, and pruning separately.', accent: true },
+  { icon: <i className="bi bi-journal-richtext text-success fs-3"></i>, title: 'Crop Advisory Guide', description: 'Farmers get crop-specific guidance for planting seasons, soil preparation, spacing, watering, fertilizer, harvesting, storage, and common risks.' },
+  { icon: <i className="bi bi-bug-fill text-success fs-3"></i>, title: 'Pest & Disease Identifier', description: 'The crop guide includes a symptom checker that matches visible plant signs to likely pests or diseases and practical control options.', accent: true },
   { icon: <i className="bi bi-moon-stars-fill text-success fs-3"></i>, title: 'Day vs Night Timing', description: 'Today and tomorrow use hourly data so overnight rain or wind does not wrongly block safe daytime work.' },
-  { icon: <i className="bi bi-leaf-fill text-success fs-3"></i>, title: 'Crop-Specific Advice', description: 'Farmers choose crop categories and receive tips for grains, tubers, legumes, vegetables, plantain, fruits, cash crops, and herbs.', accent: true },
+  { icon: <i className="bi bi-leaf-fill text-success fs-3"></i>, title: 'Crop Profiles', description: 'Farmers choose crop categories so forecasts, advisories, saved dates, and pest checks stay relevant to what they actually grow.', accent: true },
   { icon: <i className="bi bi-shield-lock-fill text-success fs-3"></i>, title: 'Admin Rule Control', description: 'Admins can tune the thresholds, validate risky changes, manage farmers, and track saved planning dates.' },
 ]
 
 const steps = [
   { number: '01', title: 'Register Your Farm', desc: 'Create a farmer account, choose your farm location, and optionally select what you grow.' },
   { number: '02', title: 'Fetch Weather Data', desc: 'SmartAgriClimate geocodes the location and reads temperature, rain, humidity, wind, and timing data.' },
-  { number: '03', title: 'Run Farm Rules', desc: 'The decision engine compares the weather against activity thresholds and severe-alert limits.' },
-  { number: '04', title: 'Plan the Work', desc: 'Save useful days with notes and crop plans so your dashboard becomes a practical farm calendar.' },
+  { number: '03', title: 'Read Crop Guidance', desc: 'Open crop advisories for your selected categories and check symptoms when pests or diseases are suspected.' },
+  { number: '04', title: 'Plan the Work', desc: 'Use the weather rules, crop advice, and saved dates to turn each good day into a practical farm plan.' },
 ]
 
 const conditionLabels = [
@@ -33,7 +35,8 @@ const activityRules = [
   'Harvesting prefers dry, low-wind weather so produce is not damaged or stored wet.',
   'Spraying is strict: very low rain, low wind, and no high heat to prevent wash-off, drift, and leaf burn.',
   'Irrigation is recommended when rain is low and temperature is high enough to stress crops.',
-  'Weeding, tillage, fertilizing, and pruning each use their own moisture, wind, and temperature limits.',
+  'Crop advisories explain preparation, care, harvest signs, storage, and common pests for each crop category.',
+  'The pest and disease identifier compares selected symptoms with known crop issues and returns likely matches.',
 ]
 
 const Landing = () => {
@@ -134,7 +137,7 @@ const Landing = () => {
                 Built around real field tasks
               </h2>
               <p className="landing-subtitle mx-0">
-                Farmers see recommended activities, severe weather alerts, crop-specific warnings, and a clear reason for the day&apos;s status.
+                Farmers see recommended activities, severe weather alerts, crop-specific advisories, pest and disease matches, and a clear reason for the day&apos;s status.
               </p>
             </div>
             <div className="col-lg-6">

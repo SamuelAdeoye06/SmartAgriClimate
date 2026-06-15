@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useAdmin } from '../../context/DashboardContext'
+import { Icon } from '../../utils/iconMap'
 import './AdminWeatherRules.css'
 
 const ACTIVITY_FIELDS = {
     planting: {
-        label: "🌱 Planting",
+        icon: "planting",
+        label: "Planting",
         desc:  "Conditions required for a good planting day",
         color: "#52b788",
         fields: [
@@ -17,7 +19,8 @@ const ACTIVITY_FIELDS = {
         ]
     },
     harvesting: {
-        label: "🌾 Harvesting",
+        icon: "harvesting",
+        label: "Harvesting",
         desc:  "Conditions required for safe harvesting",
         color: "#f4a261",
         fields: [
@@ -28,7 +31,8 @@ const ACTIVITY_FIELDS = {
         ]
     },
     spraying: {
-        label: "🧪 Spraying",
+        icon: "spraying",
+        label: "Spraying",
         desc:  "Conditions for safe pesticide and fertilizer application",
         color: "#4db6e4",
         fields: [
@@ -38,7 +42,8 @@ const ACTIVITY_FIELDS = {
         ]
     },
     irrigation: {
-        label: "💧 Irrigation",
+        icon: "irrigation",
+        label: "Irrigation",
         desc:  "When irrigation is recommended",
         color: "#74c69d",
         fields: [
@@ -47,7 +52,8 @@ const ACTIVITY_FIELDS = {
         ]
     },
     weeding: {
-        label: "🌿 Weeding",
+        icon: "weeding",
+        label: "Weeding",
         desc:  "Conditions for manual or mechanical weeding",
         color: "#83c5be",
         fields: [
@@ -60,7 +66,8 @@ const ACTIVITY_FIELDS = {
         ]
     },
     tillage: {
-        label: "🚜 Land Prep / Tillage",
+        icon: "tillage",
+        label: "Land Prep / Tillage",
         desc:  "Conditions for aerating soil and preparing beds/ridges",
         color: "#c18c5d",
         fields: [
@@ -73,7 +80,8 @@ const ACTIVITY_FIELDS = {
         ]
     },
     fertilizing: {
-        label: "🪱 Fertilizing",
+        icon: "fertilizing",
+        label: "Fertilizing",
         desc:  "Granular or compost fertilizer application conditions",
         color: "#b5e2fa",
         fields: [
@@ -86,7 +94,8 @@ const ACTIVITY_FIELDS = {
         ]
     },
     pruning: {
-        label: "✂️ Pruning / Thinning",
+        icon: "pruning",
+        label: "Pruning / Thinning",
         desc:  "Trimming leaves and cutting branches or weeding excess shoots",
         color: "#ffc2d1",
         fields: [
@@ -114,7 +123,7 @@ const DEFAULT_RULES = {
 }
 
 const AdminWeatherRules = () => {
-    const { rules, rulesLoading, rulesError, saveRules, resetRules } = useAdmin()
+    const { rules, rulesLoading, saveRules, resetRules } = useAdmin()
 
     const [local, setLocal]       = useState(DEFAULT_RULES)
     const [saving, setSaving]     = useState(false)
@@ -125,6 +134,7 @@ const AdminWeatherRules = () => {
 
     // sync from DB when rules load
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         if (rules) setLocal(rules)
     }, [rules])
 
@@ -210,7 +220,7 @@ const AdminWeatherRules = () => {
                         className={`rules-tab-btn ${activeTab === key ? 'rules-tab-btn-active' : ''}`}
                         style={activeTab === key ? { borderColor: cfg.color, color: cfg.color } : {}}
                     >
-                        {cfg.label}
+                        <Icon name={cfg.icon} className="me-1" />{cfg.label}
                     </button>
                 ))}
             </div>
@@ -246,7 +256,7 @@ const AdminWeatherRules = () => {
 
             {/* alert thresholds */}
             <div className="rules-card mb-4">
-                <h6 className="as-text-primary fw-bold mb-1">⚠️ Alert Thresholds</h6>
+                <h6 className="as-text-primary fw-bold mb-1"><Icon name="alert" className="me-1" />Alert Thresholds</h6>
                 <p className="field-description mb-3">
                     These trigger severe weather alerts on the farmer dashboard — separate from good/poor day logic.
                 </p>

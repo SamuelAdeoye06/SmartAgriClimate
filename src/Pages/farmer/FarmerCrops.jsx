@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { useFarmer } from '../../context/DashboardContext'
 import { getCropAdvisories } from '../../services/advisory.service'
 import PestChecker from '../../components/PestChecker'
+import { emojiFor } from '../../utils/emojiMap'
 import './FarmerCrops.css'
 
 // ── Per-field config: icon + label ──
@@ -26,7 +27,7 @@ const AdvisoryCard = ({ advisory, showPestBanner }) => {
             {/* Header */}
             <div className="advisory-card-header" onClick={() => setOpen(o => !o)} role="button" aria-expanded={open}>
                 <div className="advisory-card-title-row">
-                    <span className="advisory-card-emoji">{advisory.icon || '🌱'}</span>
+                    <span className="advisory-card-emoji">{emojiFor(advisory.category || advisory.icon || 'planting')}</span>
                     <div className="min-vw-0">
                         <p className="advisory-card-name">{advisory.name}</p>
                         {advisory.examples && (

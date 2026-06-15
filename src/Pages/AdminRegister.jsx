@@ -110,10 +110,10 @@ const AdminRegister = () => {
       <div className="auth-right-panel">
 
         {/* Mobile logo */}
-        <div className="d-flex d-lg-none auth-mobile-header">
+        <Link to="/" className="d-flex d-lg-none auth-mobile-header text-decoration-none">
           <i className="bi bi-cloud-sun-fill text-success fs-4 me-2"></i>
           <span className="auth-logo-text">SmartAgriClimate Admin</span>
-        </div>
+        </Link>
 
         <div className="flex-grow-1 d-flex align-items-center justify-content-center p-4">
           <div className="auth-form-wrapper">

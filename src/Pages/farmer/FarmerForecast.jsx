@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useFarmer } from '../../context/DashboardContext'
 import SaveDateModal from '../../components/SaveDateModal'
 import './FarmerForecast.css'
+import { Icon } from '../../utils/iconMap'
+import { timingLabel } from '../../utils/iconHelpers'
+import { emojiFor, timingEmoji, weatherEmoji } from '../../utils/emojiMap'
 
 const FarmerForecast = () => {
     const {
@@ -15,13 +18,6 @@ const FarmerForecast = () => {
     } = useFarmer()
 
     const [modalDay, setModalDay] = useState(null)
-
-    const getSuitabilityColor = (label) => {
-        if (label === 'Optimal') return '#52b788'
-        if (label === 'Suitable') return '#4db6e4'
-        if (label === 'Restricted') return '#f4a261'
-        return '#e63946'
-    }
 
     // ── Loading ──
     if (weatherLoading) {
@@ -37,7 +33,7 @@ const FarmerForecast = () => {
     if (weatherError) {
         return (
             <div className="text-center py-5">
-                <div className="empty-state-icon">⚠️</div>
+                <div className="empty-state-icon"><Icon name="alert" /></div>
                 <p className="as-text-primary fw-bold mt-2">{weatherError}</p>
                 <button onClick={loadWeather} className="as-btn as-btn-primary mt-2">
                     Try Again
@@ -50,7 +46,7 @@ const FarmerForecast = () => {
     if (!forecast || forecast.length === 0) {
         return (
             <div className="text-center py-5">
-                <div className="empty-state-icon">🌤</div>
+                <div className="empty-state-icon"><Icon name="weather" /></div>
                 <p className="as-text-soft mt-2">No forecast data available yet.</p>
                 <button onClick={loadWeather} className="as-btn as-btn-primary mt-2">
                     Load Forecast
@@ -70,7 +66,7 @@ const FarmerForecast = () => {
 
             {/* ── Info banner ── */}
             <div className="forecast-info-banner">
-                <span className="forecast-info-banner-icon">💡</span>
+                <span className="forecast-info-banner-icon"><Icon name="light" /></span>
                 <div className="pe-3">
                     <h6 className="forecast-info-banner-title">Hourly Precision & Timing Profiles</h6>
                     <p className="forecast-info-banner-text">
@@ -105,7 +101,7 @@ const FarmerForecast = () => {
                             </div>
 
                             {/* icon + temp + range */}
-                            <div className="forecast-icon-large">{day.icon}</div>
+                            <div className="forecast-icon-large">{weatherEmoji(day.icon)}</div>
                             <div className="forecast-temp-value">{day.temp}°C</div>
                             <div className="forecast-temp-range">
                                 ↓ {day.tempMin}°C &nbsp;·&nbsp; ↑ {day.tempMax}°C
@@ -139,10 +135,7 @@ const FarmerForecast = () => {
                                         <div className="d-flex align-items-center gap-2">
                                             {s.timing && s.timing !== 'none' && (
                                                 <span className="forecast-timing-badge">
-                                                    {s.timing === 'night'     ? '🌙 Night'
-                                                    : s.timing === 'morning'  ? '🌤 Morn'
-                                                    : s.timing === 'afternoon'? '☀️ Aft'
-                                                    : s.timing}
+                                                    {timingEmoji(s.timing)} {s.timing === 'morning' ? 'Morn' : s.timing === 'afternoon' ? 'Aft' : timingLabel(s.timing)}
                                                 </span>
                                             )}
                                             <span className="forecast-stat-value" style={{ color: s.color }}>
@@ -167,7 +160,7 @@ const FarmerForecast = () => {
                                     {day.recommendedActivities?.length > 0 ? (
                                         day.recommendedActivities.map((act) => (
                                             <span key={act.key} className="forecast-activity-chip" title={act.label}>
-                                                <span>{act.icon}</span>
+                                                <span>{emojiFor(act.key || act.icon)}</span>
                                                 <span>{act.label}</span>
                                             </span>
                                         ))
@@ -184,7 +177,7 @@ const FarmerForecast = () => {
                                 <div className="forecast-tips mt-1 mb-2">
                                     {day.categoryTips.slice(0, 2).map((tip, i) => (
                                         <div key={i} className="forecast-tip-item">
-                                            {tip.icon} <span>{tip.tip}</span>
+                                            {emojiFor(tip.icon)} <span>{tip.tip}</span>
                                         </div>
                                     ))}
                                 </div>

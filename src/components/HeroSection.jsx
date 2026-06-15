@@ -17,29 +17,29 @@ const slides = [
     bgImage: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920&q=80"
   },
   {
-    iconClass: "bi-leaf-fill",
-    badge: "Crop-Specific Advisories",
+    iconClass: "bi-journal-richtext",
+    badge: "Crop Advisory Guide",
     title: (
       <>
-        Custom insights tailored{' '}
+        Practical guidance tailored{' '}
         <span className="hero-title-accent">for your crops</span>{' '}
         to protect your yield
       </>
     ),
-    desc: "Receive customized farming rules and warnings for grains, tubers, legumes, vegetables, cash crops, and more. Adapt dynamically to local weather patterns.",
+    desc: "Review crop-specific advice for planting, soil care, watering, harvest signs, storage, and common pests across the crop categories you grow.",
     bgImage: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1920&q=80"
   },
   {
-    iconClass: "bi-calendar-check-fill",
-    badge: "Operational Calendar",
+    iconClass: "bi-bug-fill",
+    badge: "Pest & Disease Identifier",
     title: (
       <>
-        Take control of your{' '}
-        <span className="hero-title-accent">farm planning</span>{' '}
-        and scheduling
+        Spot crop problems{' '}
+        <span className="hero-title-accent">before they spread</span>{' '}
+        across the field
       </>
     ),
-    desc: "Tune weather thresholds, monitor saved planning dates, manage multiple fields, and track activity advisories directly from your farmer dashboard.",
+    desc: "Select visible symptoms and get likely pest or disease matches with prevention, organic control, and chemical control notes.",
     bgImage: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1920&q=80"
   }
 ]
@@ -64,8 +64,8 @@ const HeroSection = () => {
 
   const stats = [
     { value: '8', label: 'Farm Activities' },
-    { value: '4', label: 'Condition Labels' },
-    { value: '3hr', label: 'Weather Cache' },
+    { value: '8', label: 'Crop Categories' },
+    { value: '20', label: 'Symptom Checks' },
   ]
 
   return (

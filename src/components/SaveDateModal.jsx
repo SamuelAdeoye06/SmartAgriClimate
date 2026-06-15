@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './SaveDateModal.css'
+import { timingLabel } from '../utils/iconHelpers'
+import { emojiFor, timingEmoji, weatherEmoji } from '../utils/emojiMap'
 
 const ACTIVITIES = [
     { value: "planting",    icon: "🌱", label: "Planting",         desc: "Sowing seeds or transplanting seedlings" },
     { value: "harvesting",  icon: "🌾", label: "Harvesting",        desc: "Collecting mature crops from the farm" },
     { value: "spraying",    icon: "🧴", label: "Spraying",          desc: "Applying pesticides or herbicides" },
     { value: "irrigation",  icon: "🚿", label: "Irrigation",        desc: "Watering crops during dry conditions" },
-    { value: "weeding",     icon: "🪚", label: "Weeding",           desc: "Clearing weed growth from beds" },
+    { value: "weeding",     icon: "🌿", label: "Weeding",           desc: "Clearing weed growth from beds" },
     { value: "tillage",     icon: "🚜", label: "Tillage",           desc: "Preparing and aerating soil ridges" },
     { value: "fertilizing", icon: "🧺", label: "Fertilizing",       desc: "Applying granular nutrients or compost" },
     { value: "pruning",     icon: "✂️", label: "Pruning",           desc: "Trimming overgrown or dead shoots" },
@@ -16,16 +18,13 @@ const ACTIVITIES = [
 // ── Timing badge helper ──
 const TimingBadge = ({ timing, type }) => {
     if (!timing || timing === 'none' || timing === 'daytime' || timing === 'intermittent') return null
-    const icon  = type === 'rain' ? '🌧' : type === 'wind' ? '💨' : '🌡'
-    const label = timing === 'night' ? `🌙 Night ${type === 'rain' ? 'Rain' : type === 'wind' ? 'Wind' : 'Heat'}`
-                : timing === 'morning' ? `🌅 Morning ${type === 'rain' ? 'Rain' : 'Wind'}`
-                : `🌤 Afternoon ${type === 'rain' ? 'Rain' : 'Wind'}`
+    const label = `${timingLabel(timing)} ${type === 'rain' ? 'Rain' : type === 'wind' ? 'Wind' : 'Heat'}`
     const cls   = timing === 'night' ? 'modal-timing-badge-night'
                 : timing === 'morning' ? 'modal-timing-badge-morning'
                 : 'modal-timing-badge-afternoon'
     return (
         <span className={`modal-timing-badge ${cls}`}>
-            {icon} {label}
+            {emojiFor(type === 'rain' ? 'rain' : type === 'wind' ? 'wind' : 'temperature')} {timingEmoji(timing)} {label}
         </span>
     )
 }
@@ -85,7 +84,7 @@ const SaveDateModal = ({ day, onSave, onClose }) => {
                 <div className="as-modal-icon">📅</div>
                 <h5 className="as-modal-title">Save {day?.dayLabel} as a Farming Day</h5>
                 <p className="as-modal-subtitle">
-                    {day?.icon} {day?.temp}°C · {day?.rain}% rain · {day?.humidity}% humidity
+                    {weatherEmoji(day?.icon)} {day?.temp}°C · {day?.rain}% rain · {day?.humidity}% humidity
                 </p>
 
                 {/* ── Timing badges (only for today/tomorrow with hourly data) ── */}
@@ -115,7 +114,7 @@ const SaveDateModal = ({ day, onSave, onClose }) => {
                         <div className="d-flex flex-wrap gap-2">
                             {day.recommendedActivities.map(a => (
                                 <span key={a.key} className="modal-activity-chip modal-activity-chip-good">
-                                    {a.icon} {a.label}
+                                    {emojiFor(a.key || a.icon)} {a.label}
                                 </span>
                             ))}
                         </div>
@@ -171,7 +170,7 @@ const SaveDateModal = ({ day, onSave, onClose }) => {
                 {/* ── Future forecast disclaimer — only for Day 3-7 ── */}
                 {isFutureForecast && (
                     <div className="modal-future-disclaimer">
-                        <span className="modal-future-disclaimer-icon">⚡</span>
+                        <span className="modal-future-disclaimer-icon">💡</span>
                         <p className="modal-future-disclaimer-text">
                             <strong>Forecast precision upgrades automatically.</strong> This date currently shows daily averages. Once it's within 48 hours, SmartAgriClimate will unlock precise hour-by-hour timing analysis — showing exactly when rain, wind and heat are expected during the day.
                         </p>

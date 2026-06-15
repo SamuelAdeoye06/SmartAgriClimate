@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useFarmer } from '../../context/DashboardContext'
 import { useAuth } from '../../context/AuthContext'
 import ProfileImageModal from '../../components/ProfileImageModal'
@@ -6,7 +6,7 @@ import api from '../../api/axios'
 import './FarmerSettings.css'
 import LocationSelector from '../../components/LocationSelector'
 import { STATES, getCities } from '../../data/nigeriaLocations'
-import { useNavigate } from 'react-router-dom'
+import { Icon } from '../../utils/iconMap'
 
 // ── Crop categories list ──
 const CROP_CATEGORIES = [
@@ -30,6 +30,7 @@ const CropProfileSelector = ({ selected, onChange }) => {
     // sync from props when cropProfiles loads from context
     // (context loads async so initial render may have empty array)
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setLocal(selected || [])
     }, [selected])
 
@@ -90,12 +91,10 @@ const CropProfileSelector = ({ selected, onChange }) => {
 const FarmerSettings = () => {
     const { farmerName, setFarmerName, location, setLocation, cropProfiles, setCropProfiles, loadWeather } = useFarmer()  
     const { user, logout, updateUser } = useAuth()
-    const navigate = useNavigate()
 
     const [showAvatarModal, setShowAvatarModal] = useState(false)
     const [editingName, setEditingName]         = useState(false)
     const [tempName, setTempName]               = useState(farmerName)
-    const [nameSaved, setNameSaved]             = useState(false)
     const [editingLocation, setEditingLocation] = useState(false)
     const [tempState, setTempState]             = useState('')
     const [tempCity, setTempCity]               = useState('')    
@@ -155,8 +154,6 @@ const FarmerSettings = () => {
             setFarmerName(tempName)
             updateUser(data.user)
             setEditingName(false)
-            setNameSaved(true)
-            setTimeout(() => setNameSaved(false), 2500)
         } catch (err) {
             console.error('Failed to save name:', err.message)
         }
@@ -168,7 +165,7 @@ const FarmerSettings = () => {
         try {
             const { data } = await api.patch('/auth/update-profile', { farmLocation: newLocation })
             setLocation(newLocation)
-            updateUser(data.user)  // ✅ sync localStorage
+            updateUser(data.user)  // sync localStorage
             await api.post('/weather/refresh')
             setEditingLocation(false)
             loadWeather()
@@ -182,7 +179,7 @@ const FarmerSettings = () => {
         try {
             const { data } = await api.patch('/auth/update-profile', { cropProfiles: newProfiles })
             setCropProfiles(newProfiles)
-            updateUser(data.user)  // ✅ sync localStorage so refresh works
+            updateUser(data.user)  // sync localStorage so refresh works
         } catch (err) {
             console.error("Failed to save crop profiles:", err.message)
         }
@@ -212,7 +209,7 @@ const FarmerSettings = () => {
         setDeleteLoading(true)
         try {
             await api.post('/auth/verify-otp', { otp: deleteOtp })
-            logout()  // ✅ clears session and redirects to /login
+            logout()  // clears session and redirects to /login
         } catch (err) {
             setDeleteError(err.response?.data?.message || 'Invalid OTP. Please try again.')
         } finally {
@@ -332,7 +329,7 @@ const FarmerSettings = () => {
                             </div>
                         ) : (
                             <div className="d-flex justify-content-between align-items-center">
-                                <span className="as-text-accent fw-bold">📍 {location}</span>
+                                <span className="as-text-accent fw-bold"><Icon name="location" className="me-1" /> {location}</span>
                                 <button
                                     onClick={() => setEditingLocation(true)}
                                     className="btn btn-sm p-0 as-text-primary"
@@ -456,7 +453,7 @@ const FarmerSettings = () => {
                         {deleteStep === 'confirm' && (
                             <>
                                 <div className="text-center mb-4">
-                                    <div className="delete-alert-icon-wrapper">🗑️</div>
+                                    <div className="delete-alert-icon-wrapper"><Icon name="trash" /></div>
                                     <h5 className="as-text-primary fw-bold mb-2">Delete Your Account?</h5>
                                     <p className="as-text-soft m-0 delete-modal-text-desc">
                                         This cannot be undone. All your data including saved dates and crop profiles will be permanently lost,an OTP will be sent to your mail to confirm delete
@@ -491,7 +488,7 @@ const FarmerSettings = () => {
                         {deleteStep === 'otp' && (
                             <>
                                 <div className="text-center mb-4">
-                                    <div className="delete-alert-icon-wrapper">📧</div>
+                                    <div className="delete-alert-icon-wrapper"><Icon name="mail" /></div>
                                     <h5 className="as-text-primary fw-bold mb-2">Confirm with OTP</h5>
                                     <p className="as-text-soft m-0 delete-modal-text-desc">
                                         A 6-digit code was sent to <strong>{user?.email}</strong>. Enter it below to confirm deletion.

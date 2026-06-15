@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFarmer } from '../../context/DashboardContext'
+import { Icon } from '../../utils/iconMap'
+import { weatherEmoji } from '../../utils/emojiMap'
 import './FarmerSavedDates.css'
 
 const FarmerSavedDates = () => {
@@ -54,7 +56,7 @@ const FarmerSavedDates = () => {
             {/* error message */}
             {error && (
                 <div className="alert alert-danger py-2 mb-3" onClick={() => setError(null)}>
-                    {error} <span className="float-end" style={{ cursor: 'pointer' }}>✕</span>
+                    {error} <span className="float-end" style={{ cursor: 'pointer' }}><Icon name="bi-x-lg" /></span>
                 </div>
             )}
 
@@ -82,7 +84,7 @@ const FarmerSavedDates = () => {
                                 <div className="d-flex justify-content-between align-items-start gap-2">
                                     <div>
                                         <div className="saved-card-title">
-                                            {d.weatherSnapshot?.icon || '📅'} {d.dayLabel}
+                                            {weatherEmoji(d.weatherSnapshot?.icon, '📅')} {d.dayLabel}
                                         </div>
                                         <div className="saved-card-meta">
                                             {d.date}

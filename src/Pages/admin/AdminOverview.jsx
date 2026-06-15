@@ -1,6 +1,6 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAdmin } from '../../context/DashboardContext'
+import { Icon } from '../../utils/iconMap'
 import './AdminOverview.css'
 
 const AdminOverview = () => {
@@ -14,26 +14,26 @@ const AdminOverview = () => {
 
     const stats = [
         {
-            icon:  '👨🏾‍🌾',
+            icon:  'farmer',
             label: 'Total Farmers',
             value: usersLoading ? '...' : users.length,
             color: '#52b788'
         },
         {
-            icon:  '✅',
+            icon:  'clear',
             label: 'Active Farmers',
             value: usersLoading ? '...' : users.filter(u => u.status === 'active').length,
             color: '#2d6a4f'
         },
         {
-            icon:  '📅',
+            icon:  'calendar',
             label: 'Total Saved Dates',
             value: statsLoading ? '...' : totalSavedDates,
             color: '#74c69d'
         },
         isSuperAdmin
-            ? { icon: '🛡️', label: 'Total Admins', value: adminsLoading ? '...' : admins.length, color: '#1b4332' }
-            : { icon: '📋',  label: 'Weather Rules', value: 'Configured', color: '#1b4332' }
+            ? { icon: 'admin', label: 'Total Admins', value: adminsLoading ? '...' : admins.length, color: '#1b4332' }
+            : { icon: 'rules',  label: 'Weather Rules', value: 'Configured', color: '#1b4332' }
     ]
 
     return (
@@ -56,7 +56,7 @@ const AdminOverview = () => {
                 {stats.map((s) => (
                     <div className="col-6 col-lg-3" key={s.label}>
                         <div className="as-card as-card-hover">
-                            <div className="stat-icon">{s.icon}</div>
+                            <div className="stat-icon"><Icon name={s.icon} /></div>
                             <div className="stat-value" style={{ color: s.color }}>{s.value}</div>
                             <div className="as-text-primary fw-bold mt-2 stat-label">{s.label}</div>
                         </div>

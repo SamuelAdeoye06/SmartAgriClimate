@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFarmer } from '../../context/DashboardContext'
 import './FarmerOverview.css'
 import SaveDateModal from '../../components/SaveDateModal'
+import { Icon } from '../../utils/iconMap'
+import { timingLabel } from '../../utils/iconHelpers'
+import { emojiFor, timingEmoji, weatherEmoji } from '../../utils/emojiMap'
 
 const FarmerOverview = () => {
     const [modalDay, setModalDay] = useState(null)
@@ -27,7 +30,7 @@ const FarmerOverview = () => {
     if (weatherError) {
         return (
             <div className="text-center py-5">
-                <div className="empty-state-icon">⚠️</div>
+                <div className="empty-state-icon"><Icon name="alert" /></div>
                 <p className="as-text-primary fw-bold mt-2">{weatherError}</p>
                 <button onClick={loadWeather} className="as-btn as-btn-primary mt-2">
                     Try Again
@@ -40,7 +43,7 @@ const FarmerOverview = () => {
     if (!todayWeather) {
         return (
             <div className="text-center py-5">
-                <div className="empty-state-icon">🌤</div>
+                <div className="empty-state-icon"><Icon name="weather" /></div>
                 <p className="as-text-soft mt-2">No weather data yet.</p>
                 <button onClick={loadWeather} className="as-btn as-btn-primary mt-2">
                     Load Weather
@@ -52,28 +55,28 @@ const FarmerOverview = () => {
     // ── Stat cards ──
     const statCards = [
         {
-            icon:  '🌡',
+            icon:  'temperature',
             label: 'Temperature Now',
             value: `${todayWeather.temp}°C`,
             sub:   `Today's range: ${forecast[0]?.tempMin ?? '--'}°C – ${forecast[0]?.tempMax ?? '--'}°C`,
             color: '#ff8c42'
         },
         {
-            icon:  '🌧',
+            icon:  'rain',
             label: 'Rain Chance',
             value: `${forecast[0]?.rain ?? 0}%`,
             sub:   forecast[0]?.rain > 60 ? 'Likely to rain today' : 'Low rain chance today',
             color: 'var(--as-primary-green)'
         },
         {
-            icon:  '💧',
+            icon:  'humidity',
             label: 'Humidity',
             value: `${todayWeather.humidity}%`,
             sub:   todayWeather.humidity > 70 ? 'High moisture levels' : 'Moderate humidity',
             color: '#4db6e4'
         },
         {
-            icon:  activeAlert ? '⚠️' : '✅',
+            icon:  activeAlert ? 'alert' : 'clear',
             label: 'Farm Alert',
             value: activeAlert ? 'Alert' : 'All Clear',
             sub:   activeAlert
@@ -102,7 +105,7 @@ const FarmerOverview = () => {
                 {statCards.map((stat) => (
                     <div className="col-6 col-lg-3" key={stat.label}>
                         <div className="as-card">
-                            <div className="stat-icon-large">{stat.icon}</div>
+                            <div className="stat-icon-large">{emojiFor(stat.icon)}</div>
                             <div className="stat-value-large" style={{ color: stat.color }}>
                                 {stat.value}
                             </div>
@@ -124,15 +127,12 @@ const FarmerOverview = () => {
                         </p>
                         {todayWeather.rainTiming && todayWeather.rainTiming !== 'none' && (
                             <span className="overview-timing-badge">
-                                {todayWeather.rainTiming === 'night'     ? '🌙 Night Rain'
-                                : todayWeather.rainTiming === 'morning'  ? '🌤 Morning Rain'
-                                : todayWeather.rainTiming === 'afternoon'? '☀️ Afternoon Rain'
-                                :                                          '🌧 Intermittent Rain'}
+                                {timingEmoji(todayWeather.rainTiming)} {timingLabel(todayWeather.rainTiming)} Rain
                             </span>
                         )}
                     </div>
                     <h3 className="as-section-title text-white mb-1 weather-banner-title">
-                        {todayWeather.icon} {todayWeather.label || (todayWeather.isGoodDay ? 'Suitable' : 'Unsafe')} Conditions
+                        {weatherEmoji(todayWeather.icon)} {todayWeather.label || (todayWeather.isGoodDay ? 'Suitable' : 'Unsafe')} Conditions
                     </h3>
                     <p className="as-text-soft m-0 weather-banner-desc">
                         {todayWeather.recommendation}
@@ -152,9 +152,7 @@ const FarmerOverview = () => {
             {activeAlert && (
                 <div className="mb-4 p-3 rounded-3 d-flex align-items-start gap-3 alert-banner">
                     <span className="alert-banner-icon">
-                        {activeAlert.type === 'flood' ? '🌊'
-                            : activeAlert.type === 'wind' ? '💨'
-                            : '🌡'}
+                        {emojiFor(activeAlert.type === 'flood' ? 'flood' : activeAlert.type === 'wind' ? 'wind' : 'temperature')}
                     </span>
                     <div>
                         <p className="fw-bold m-0 alert-banner-title d-flex align-items-center gap-2">
@@ -205,7 +203,7 @@ const FarmerOverview = () => {
                                     >
                                         {/* Day */}
                                         <div className="fp-col-day">
-                                            <span className="fp-weather-icon">{day.icon}</span>
+                                            <span className="fp-weather-icon">{weatherEmoji(day.icon)}</span>
                                             <div>
                                                 <div className="fp-day-name">{day.dayShort}</div>
                                                 <div className="fp-day-date">{day.date?.slice(5)}</div>
@@ -223,10 +221,7 @@ const FarmerOverview = () => {
                                             <span className="fp-rain-value">{day.rain}%</span>
                                             {day.rainTiming && day.rainTiming !== 'none' && (
                                                 <span className="fp-timing-tag">
-                                                    {day.rainTiming === 'night'      ? '🌙 Night'
-                                                    : day.rainTiming === 'morning'   ? '🌤 Morn'
-                                                    : day.rainTiming === 'afternoon' ? '☀️ Aft'
-                                                    :                                  '🌧 Mix'}
+                                                    {timingEmoji(day.rainTiming)} {day.rainTiming === 'morning' ? 'Morn' : day.rainTiming === 'afternoon' ? 'Aft' : timingLabel(day.rainTiming)}
                                                 </span>
                                             )}
                                         </div>
@@ -237,7 +232,7 @@ const FarmerOverview = () => {
                                                 <div className="fp-activity-pills">
                                                     {day.recommendedActivities.slice(0, 2).map((act) => (
                                                         <span key={act.key} className="fp-activity-pill" title={act.label}>
-                                                            {act.icon} {act.label}
+                                                            {emojiFor(act.key || act.icon)} {act.label}
                                                         </span>
                                                     ))}
                                                     {day.recommendedActivities.length > 2 && (
@@ -310,7 +305,7 @@ const FarmerOverview = () => {
                                 <div key={d._id} className="d-flex align-items-start justify-content-between py-2 border-bottom gap-2 forecast-item">
                                     <div className="overflow-hidden">
                                         <div className="as-text-primary fw-bold saved-preview-title">
-                                            {d.weatherSnapshot?.icon || '📅'} {d.dayLabel} — {d.date}
+                                            {weatherEmoji(d.weatherSnapshot?.icon, '📅')} {d.dayLabel} - {d.date}
                                         </div>
                                         {d.cropName && (
                                             <div className="as-text-soft saved-preview-sub">🌱 {d.cropName}</div>

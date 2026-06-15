@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import './Footer.css'
 
@@ -10,12 +9,12 @@ const Footer = () => {
 
           {/* Brand */}
           <div className="col-lg-4">
-            <div className="d-flex align-items-center gap-2 mb-3">
+            <Link to="/" className="d-flex align-items-center gap-2 mb-3 text-decoration-none">
               <i className="bi bi-cloud-sun-fill text-success fs-4"></i>
               <span className="as-footer-logo-text">
                 SmartAgriClimate
               </span>
-            </div>
+            </Link>
             <p className="as-footer-desc">
               Smart weather intelligence for modern farmers. Plan smarter, harvest better.
             </p>
