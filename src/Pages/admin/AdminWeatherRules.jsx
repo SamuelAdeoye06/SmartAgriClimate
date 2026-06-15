@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useAdmin } from '../../context/DashboardContext'
-import { Icon } from '../../utils/iconMap'
+import { emojiFor } from '../../utils/emojiMap'
 import './AdminWeatherRules.css'
 
 const ACTIVITY_FIELDS = {
@@ -220,7 +220,7 @@ const AdminWeatherRules = () => {
                         className={`rules-tab-btn ${activeTab === key ? 'rules-tab-btn-active' : ''}`}
                         style={activeTab === key ? { borderColor: cfg.color, color: cfg.color } : {}}
                     >
-                        <Icon name={cfg.icon} className="me-1" />{cfg.label}
+                        <span className="me-1" aria-hidden="true">{emojiFor(cfg.icon)}</span>{cfg.label}
                     </button>
                 ))}
             </div>
@@ -256,7 +256,7 @@ const AdminWeatherRules = () => {
 
             {/* alert thresholds */}
             <div className="rules-card mb-4">
-                <h6 className="as-text-primary fw-bold mb-1"><Icon name="alert" className="me-1" />Alert Thresholds</h6>
+                <h6 className="as-text-primary fw-bold mb-1"><span className="me-1" aria-hidden="true">{emojiFor('alert')}</span>Alert Thresholds</h6>
                 <p className="field-description mb-3">
                     These trigger severe weather alerts on the farmer dashboard — separate from good/poor day logic.
                 </p>

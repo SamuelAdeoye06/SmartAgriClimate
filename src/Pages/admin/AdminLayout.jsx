@@ -4,7 +4,7 @@ import { Outlet, NavLink, useNavigate, Link } from 'react-router-dom'
 import { useAdmin } from '../../context/DashboardContext'
 import { useAuth } from '../../context/AuthContext'
 import useProtectedRoute from '../../hooks/useAuth'
-import { Icon } from '../../utils/iconMap'
+import { emojiFor } from '../../utils/emojiMap'
 import './AdminLayout.css'
 
 const AdminSidebar = ({ navItems, onNav, isSuperAdmin, adminName, onAddAdmin, onLogout }) => (
@@ -20,7 +20,7 @@ const AdminSidebar = ({ navItems, onNav, isSuperAdmin, adminName, onAddAdmin, on
     <div className="sidebar-user-pill">
       <div className="user-pill-label">Signed in as</div>
       <div className="user-pill-name">
-        {isSuperAdmin ? <><Icon name="admin" className="me-1" />Super Admin</> : 'Admin'}
+        {isSuperAdmin ? <><span className="me-1" aria-hidden="true">{emojiFor('admin')}</span>Super Admin</> : 'Admin'}
       </div>
       <div className="user-pill-email">{adminName}</div>
     </div>
@@ -124,7 +124,7 @@ const AdminLayout = () => {
               <div className="d-flex align-items-center gap-2 flex-wrap">
                 <p className="topbar-subtitle">SmartAgriClimate · {adminName}</p>
                 <span className={`topbar-role-badge ${isSuperAdmin ? 'topbar-role-badge-super' : ''}`}>
-                  {isSuperAdmin ? <><Icon name="admin" className="me-1" />Super Admin</> : 'Admin'}
+                  {isSuperAdmin ? <><span className="me-1" aria-hidden="true">{emojiFor('admin')}</span>Super Admin</> : 'Admin'}
                 </span>
               </div>
             </div>

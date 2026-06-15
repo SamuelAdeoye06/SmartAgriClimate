@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useAdmin } from '../../context/DashboardContext'
-import { Icon } from '../../utils/iconMap'
+import { emojiFor } from '../../utils/emojiMap'
 import './AdminOverview.css'
 
 const AdminOverview = () => {
@@ -56,7 +56,7 @@ const AdminOverview = () => {
                 {stats.map((s) => (
                     <div className="col-6 col-lg-3" key={s.label}>
                         <div className="as-card as-card-hover">
-                            <div className="stat-icon"><Icon name={s.icon} /></div>
+                            <div className="stat-icon" aria-hidden="true">{emojiFor(s.icon)}</div>
                             <div className="stat-value" style={{ color: s.color }}>{s.value}</div>
                             <div className="as-text-primary fw-bold mt-2 stat-label">{s.label}</div>
                         </div>

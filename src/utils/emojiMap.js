@@ -31,6 +31,10 @@ const EMOJIS = {
     afternoon: '☀️',
     weather: '🌤',
     light: '💡',
+    farmer: '👨‍🌾',
+    admin: '🛡️',
+    rules: '🎚️',
+    location: '📍',
 }
 
 const ICON_TO_EMOJI = {

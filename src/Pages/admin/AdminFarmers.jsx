@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAdmin } from '../../context/DashboardContext'
 import { Icon } from '../../utils/iconMap'
+import { emojiFor } from '../../utils/emojiMap'
 import './AdminFarmers.css'
 
 const StatusBadge = ({ status }) => (
@@ -154,7 +155,7 @@ const AdminFarmers = () => {
                   <StatusBadge status={u.status} />
                 </div>
                 <div className="as-text-soft farmer-mobile-meta">
-                  <Icon name="location" className="me-1" />{u.location} &nbsp;·&nbsp; <Icon name="calendar" className="me-1" />{u.saved} saved &nbsp;·&nbsp; Joined {u.joined}
+                  <span className="me-1" aria-hidden="true">{emojiFor('location')}</span>{u.location} &nbsp;·&nbsp; <span className="me-1" aria-hidden="true">{emojiFor('calendar')}</span>{u.saved} saved &nbsp;·&nbsp; Joined {u.joined}
                 </div>
                 <div className="d-flex gap-2">
                   <button

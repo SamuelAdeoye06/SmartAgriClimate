@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAdmin } from '../../context/DashboardContext'
 import { Icon } from '../../utils/iconMap'
+import { emojiFor } from '../../utils/emojiMap'
 import './AdminAdmins.css'
 
 const RoleBadge = ({ role }) => (
   <span className={`as-badge ${role === 'super_admin' ? 'as-badge-super' : 'as-badge-active'} px-3`}>
-    {role === 'super_admin' ? <><Icon name="admin" className="me-1" />Super Admin</> : 'Admin'}
+    {role === 'super_admin' ? <><span className="me-1" aria-hidden="true">{emojiFor('admin')}</span>Super Admin</> : 'Admin'}
   </span>
 )
 
